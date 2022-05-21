@@ -1,0 +1,12 @@
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\bin\Debug\PriceList.exe.config
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\bin\Debug\PriceList.exe
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\bin\Debug\PriceList.pdb
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.csproj.AssemblyReference.cache
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.Form1.resources
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.Properties.Resources.resources
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.csproj.GenerateResource.cache
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.csproj.CoreCompileInputs.cache
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.exe
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.pdb
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.FormProductos.resources
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.FormListaPrecios.resources
