@@ -106,5 +106,11 @@
     <None Include="Resources\images\listaPreciosIconoBoton.png" />
     <None Include="Resources\images\ferreteriaIconoBoton.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLogic\BLogic.csproj">
+      <Project>{66a2d9df-15fd-4960-b0e7-3993633926ab}</Project>
+      <Name>BLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
