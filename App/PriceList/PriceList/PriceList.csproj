@@ -99,8 +99,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\botonBuscar.png" />
     <Content Include="Resources\icons\ferreteriaIcono.ico" />
     <Content Include="Resources\icons\listaPreciosIcono.ico" />
+    <Content Include="Resources\images\botonBuscar.png" />
+    <Content Include="Resources\images\botonGuardar.png" />
     <Content Include="Resources\images\ferreteriaIcono.png" />
     <Content Include="Resources\images\listaPreciosIcono.png" />
     <None Include="Resources\images\listaPreciosIconoBoton.png" />

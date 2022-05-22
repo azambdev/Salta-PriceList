@@ -63,6 +63,26 @@ namespace PriceList.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap botonBuscar {
+            get {
+                object obj = ResourceManager.GetObject("botonBuscar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap botonGuardar {
+            get {
+                object obj = ResourceManager.GetObject("botonGuardar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ferreteriaIcono {
             get {
                 object obj = ResourceManager.GetObject("ferreteriaIcono", resourceCulture);

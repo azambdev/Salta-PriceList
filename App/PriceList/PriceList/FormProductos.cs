@@ -16,5 +16,56 @@ namespace PriceList
         {
             InitializeComponent();
         }
+
+        private void FormProductos_Load(object sender, EventArgs e)
+        {
+
+            BLogic.Categoria categoria = new BLogic.Categoria();
+            List<BLogic.Categoria>  listaCategorias= categoria.GetCategorias();
+
+            foreach (var item in listaCategorias)
+            {
+                dropDownCategorias.Items.Add(item.Descripcion());
+            }
+            dropDownCategorias.SelectedIndex = 0;
+        }
+
+        public bool FaltaCompletar(string campo)
+        {
+            if (campo.Length==0)
+            {
+                return true;
+            }
+            return false ;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (FaltaCompletar(CodigoProducto()))
+            {
+                MessageBox.Show("Debe completar el código del producto", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (FaltaCompletar(DescripcionDelProducto()))
+            {
+                MessageBox.Show("Debe completar la descripción del producto", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+
+
+
+
+        }
+
+
+        private string CodigoProducto()
+        {
+            return txtCodigoProducto.Text;
+        }
+
+        private string DescripcionDelProducto()
+        {
+            return txtDescripcionProducto.Text;
+        }
     }
 }
