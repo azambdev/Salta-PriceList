@@ -9,3 +9,7 @@ App/PriceList/BLogic/bin/Debug/BLogic.pdb
 App/PriceList/PriceList/obj/Debug/_IsIncrementalBuild
 *.cache
 App/PriceList/.vs/PriceList/v17/.suo
+App/PriceList/PriceList/bin/Debug/PriceList.exe
+App/PriceList/PriceList/bin/Debug/PriceList.pdb
+App/PriceList/PriceList/obj/Debug/PriceList.exe
+App/PriceList/PriceList/obj/Debug/PriceList.pdb
