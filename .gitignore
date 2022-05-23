@@ -7,3 +7,5 @@ App/PriceList/BLogic/bin/Debug/BLogic.dll
 App/PriceList/BLogic/bin/Debug/BLogic.pdb
 *.dll
 App/PriceList/PriceList/obj/Debug/_IsIncrementalBuild
+*.cache
+App/PriceList/.vs/PriceList/v17/.suo
