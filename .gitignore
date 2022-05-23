@@ -1,5 +1,3 @@
-/bin 
-/OBJ
 App/PriceList/BLogic/obj/Debug/BLogic.csproj.CopyComplete
 App/PriceList/BLogic/bin/Debug/BLogic.dll
 App/PriceList/BLogic/bin/Debug/BLogic.dll
@@ -13,3 +11,6 @@ App/PriceList/PriceList/bin/Debug/PriceList.exe
 App/PriceList/PriceList/bin/Debug/PriceList.pdb
 App/PriceList/PriceList/obj/Debug/PriceList.exe
 App/PriceList/PriceList/obj/Debug/PriceList.pdb
+bin 
+obj
+debug
