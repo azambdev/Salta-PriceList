@@ -28,3 +28,4 @@ D:\source\repos\Salta-PriceList\App\PriceList\PriceList\bin\Debug\System.Numeric
 D:\source\repos\Salta-PriceList\App\PriceList\PriceList\bin\Debug\DAL.pdb
 D:\source\repos\Salta-PriceList\App\PriceList\PriceList\bin\Debug\MySql.Data.xml
 D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.exe.config
+D:\source\repos\Salta-PriceList\App\PriceList\PriceList\obj\Debug\PriceList.csproj.SuggestedBindingRedirects.cache

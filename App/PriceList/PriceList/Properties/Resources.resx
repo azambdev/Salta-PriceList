@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ferreteriaIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images\ferreteriaIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ferreteriaIconoBoton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\ferreteriaIconoBoton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="botonBuscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\botonBuscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="botonGuardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\botonGuardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,7 +130,13 @@
   <data name="listaPreciosIconoBoton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\listaPreciosIconoBoton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="botonBuscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\botonBuscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nuevaListaImagenIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\nuevaListaImagenIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ferreteriaIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\ferreteriaIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="impresoraImagenIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\impresoraImagenIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

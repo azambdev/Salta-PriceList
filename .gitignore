@@ -1,3 +1,9 @@
 /bin 
 /OBJ
 App/PriceList/BLogic/obj/Debug/BLogic.csproj.CopyComplete
+App/PriceList/BLogic/bin/Debug/BLogic.dll
+App/PriceList/BLogic/bin/Debug/BLogic.dll
+App/PriceList/BLogic/bin/Debug/BLogic.dll
+App/PriceList/BLogic/bin/Debug/BLogic.pdb
+*.dll
+App/PriceList/PriceList/obj/Debug/_IsIncrementalBuild
