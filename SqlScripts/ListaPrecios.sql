@@ -7,10 +7,10 @@ Activo bit default 1
 );
 
 
-Create Table Productos
+create Table Productos
 (
 Id int AUTO_INCREMENT primary key,
-Codigo int unique not null,
+Codigo varchar(50) unique not null,
 IdCotegoria int not null,
 Descripcion varchar(50) not null,
 Activo bit default 1,
@@ -29,7 +29,7 @@ Create Table ListaPreciosProductos
 (
 Id int AUTO_INCREMENT primary key,
 IdListaPrecio int,
-CodigoProducto int,
+CodigoProducto varchar(50),
 FOREIGN KEY (IdListaPrecio) REFERENCES ListaPrecios(Id),
 FOREIGN KEY (CodigoProducto) REFERENCES Productos(Codigo),
 PrecioCosto decimal not null default 0,
