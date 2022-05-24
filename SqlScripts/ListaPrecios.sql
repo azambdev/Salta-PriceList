@@ -104,6 +104,11 @@ Select id, descripcion, activo from listaprecios;
 
 END
 
+DELIMITER //
+CREATE PROCEDURE `GetProductos`()
+BEGIN
+select Id, Codigo, IdCategoria, Descripcion, Activo, Imagen from productos;
+END
 
 
 
