@@ -11,6 +11,7 @@ namespace BLogic
     {
 
         private int _id;
+        private string _codigo; 
         private string _descripcion;
         private bool _activo;
 
@@ -24,9 +25,13 @@ namespace BLogic
         public bool Activo()
         { return this._activo; }
 
-        public Categoria(int id, string descripcion, bool activo)
+        public string Codigo()
+        { return this._codigo; }
+
+        public Categoria(int id, string codigo, string descripcion, bool activo)
         {
             this._id = id;
+            this._codigo = codigo;
             this._descripcion = descripcion;
             this._activo = activo;
 
@@ -51,7 +56,7 @@ namespace BLogic
                     esActivo = true;
                 }
 
-                categorias.Add(new Categoria(int.Parse(row["id"].ToString()), row["descripcion"].ToString(), esActivo));
+                categorias.Add(new Categoria(int.Parse(row["id"].ToString()), row["codigo"].ToString(), row["descripcion"].ToString(), esActivo));
             }
             return categorias;
         }

@@ -20,6 +20,42 @@ namespace PriceList
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
 
+            if (Application.OpenForms["FormNuevaListaPrecios"] != null)
+            {
+                // form is opened, so activate it
+                Application.OpenForms["FormNuevaListaPrecios"].Activate();
+            }
+            else
+            {
+                FormListaPrecios frmLista = new FormListaPrecios();
+                // frm.MdiParent = this;
+                // frm.Dock = DockStyle.;
+                frmLista.Show();
+
+            }
+
+
+        }
+
+        private void FormListaPrecios_Load(object sender, EventArgs e)
+        {
+
+
+
+
+            BLogic.Categoria categoria = new BLogic.Categoria();
+            List<BLogic.Categoria> listaCategorias = categoria.GetCategorias();
+
+            if (listaCategorias.Any())
+            {
+                foreach (var item in listaCategorias)
+                {
+                    dropDownCategorias.Items.Add(item.Codigo() + " - " + item.Descripcion());
+                }
+                dropDownCategorias.SelectedIndex = 0;
+            }
+
+
         }
     }
 }

@@ -21,22 +21,25 @@ namespace PriceList
         {
 
             BLogic.Categoria categoria = new BLogic.Categoria();
-            List<BLogic.Categoria>  listaCategorias= categoria.GetCategorias();
+            List<BLogic.Categoria> listaCategorias = categoria.GetCategorias();
 
-            foreach (var item in listaCategorias)
+            if (listaCategorias.Any())
             {
-                dropDownCategorias.Items.Add(item.Descripcion());
+                foreach (var item in listaCategorias)
+                {
+                    dropDownCategorias.Items.Add(item.Codigo() + " - " + item.Descripcion());
+                }
+                dropDownCategorias.SelectedIndex = 0;
             }
-            dropDownCategorias.SelectedIndex = 0;
         }
 
         public bool FaltaCompletar(string campo)
         {
-            if (campo.Length==0)
+            if (campo.Length == 0)
             {
                 return true;
             }
-            return false ;
+            return false;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

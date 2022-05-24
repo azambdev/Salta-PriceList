@@ -11,7 +11,6 @@ namespace DAL
 {
     public class RepositorioDeCategorias
     {
-
         public DataTable GetCategoriasDeProductos()
         {
             DataTable dt = new DataTable();
