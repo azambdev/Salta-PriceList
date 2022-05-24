@@ -1,17 +1,20 @@
 use ferreteria;
-Create Table Categorias
+
+
+create Table Categorias
 (
 Id int AUTO_INCREMENT primary key,
+Codigo varchar (5) unique not null,
 Descripcion varchar(50) not null unique,
 Activo bit default 1
 );
 
 
-create Table Productos
+Create Table Productos
 (
 Id int AUTO_INCREMENT primary key,
 Codigo varchar(50) unique not null,
-IdCotegoria int not null,
+IdCategoria int not null,
 Descripcion varchar(50) not null,
 Activo bit default 1,
 Imagen longblob,
@@ -64,32 +67,42 @@ AlicuotaIva decimal,
 PrecioVentaFinal decimal,
 FechaActualizacion Datetime not null
 );
+SELECT * FROM Categorias
+insert into Categorias (codigo, descripcion, activo) values ('GE','General',1);
+insert into Categorias (codigo, descripcion, activo) values ('HN','Herramientas Neumáticas',1);
+insert into Categorias (codigo, descripcion, activo) values ('VA','Válvulas',1);
+insert into Categorias (codigo, descripcion, activo) values ('TO','Tornillos',1);
+insert into Categorias (codigo, descripcion, activo) values ('HE','Herramientas Eléctricas',1);
+insert into Categorias (codigo, descripcion, activo) values ('SI','Seguridad Industrial',1);
+insert into Categorias (codigo, descripcion, activo) values ('CO','Conectores',1);
+insert into Categorias (codigo, descripcion, activo) values ('PL','Plomería',1);
+insert into Categorias (codigo, descripcion, activo) values ('TU','Tubos',1);
+insert into Categorias (codigo, descripcion, activo) values ('PI','Pintura',1);
+insert into Categorias (codigo, descripcion, activo) values ('SO','Soldadura',1);
+insert into Categorias (codigo, descripcion, activo) values ('ME','Materiales eléctricos',1);
+insert into Categorias (codigo, descripcion, activo) values ('MA','Mangueras',1);
+insert into Categorias (codigo, descripcion, activo) values ('LI','Artículos de limpieza',1);
+insert into Categorias (codigo, descripcion, activo) values ('GA','Gas',1);
 
-insert into Categorias (descripcion, activo) values ('General',1);
-insert into Categorias (descripcion, activo) values ('Sanitarios',1);
-insert into Categorias (descripcion, activo) values ('Válvulas',1);
-insert into Categorias (descripcion, activo) values ('Tornillos',1);
-insert into Categorias (descripcion, activo) values ('Herramientas',1);
-insert into Categorias (descripcion, activo) values ('Seguridad Industrial',1);
-insert into Categorias (descripcion, activo) values ('Conectores',1);
-insert into Categorias (descripcion, activo) values ('Plomería',1);
-insert into Categorias (descripcion, activo) values ('Tubos',1);
-insert into Categorias (descripcion, activo) values ('Pintura',1);
-insert into Categorias (descripcion, activo) values ('Soldadura',1);
-insert into Categorias (descripcion, activo) values ('Materiales eléctricos',1);
-insert into Categorias (descripcion, activo) values ('Mangueras',1);
-insert into Categorias (descripcion, activo) values ('Artículos de limpieza',1);
-insert into Categorias (descripcion, activo) values ('Gas',1);
 
+
+insert into productos (codigo, IdCategoria, Descripcion, Activo) values ('ME-0000001',12, 'Luces Halógenas',1);
+insert into productos (codigo, IdCategoria, Descripcion, Activo) values ('ME-0000002',12, 'Bombillos ahorradores de luz',1);
 DELIMITER //
 CREATE PROCEDURE `GetCategorias`()
 BEGIN
 
-Select id, descripcion, activo from Categorias;
+Select id, codigo, descripcion, activo from Categorias;
 
 END
 
+DELIMITER //
+CREATE PROCEDURE `GetListasDePrecios`()
+BEGIN
 
+Select id, descripcion, activo from listaprecios;
+
+END
 
 
 
