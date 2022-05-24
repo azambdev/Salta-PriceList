@@ -27,7 +27,7 @@ namespace PriceList
             }
             else
             {
-                FormListaPrecios frmLista = new FormListaPrecios();
+                FormNuevaListaPrecios frmLista = new FormNuevaListaPrecios();
                 // frm.MdiParent = this;
                 // frm.Dock = DockStyle.;
                 frmLista.Show();

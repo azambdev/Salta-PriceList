@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BLogic
 {
-    internal class Producto
+    public class Producto
     {
         private int _id;
         private string _codigo;
@@ -58,5 +59,37 @@ namespace BLogic
         {
             return this._categoria;
         }
+
+        public List<Producto> GetProductos()
+        {
+
+            Categoria categoria = new Categoria();
+            List<Categoria> categorias = categoria.GetCategorias();
+
+            DAL.RepositorioDeProductos repo = new DAL.RepositorioDeProductos();
+            List<Producto> productos = new List<Producto>();
+            DataTable table = repo.GetAll();
+
+            Encoding unicode = Encoding.Unicode;
+
+            foreach (DataRow row in table.Rows)
+            {
+                bool esActivo = false;
+                if (row["activo"].ToString() == "1")
+                {
+                    esActivo = true;
+                }
+                Categoria categoriaDeProducto = categorias.Find(x => x.Id() == int.Parse(row["IdCategoria"].ToString()));
+
+
+                productos.Add(new Producto(int.Parse(row["id"].ToString()), row["codigo"].ToString(), categoriaDeProducto, row["Descripcion"].ToString(), esActivo, unicode.GetBytes(row["Imagen"].ToString())));
+            }
+            return productos;
+        }
+
+
+
+
+
     }
 }
