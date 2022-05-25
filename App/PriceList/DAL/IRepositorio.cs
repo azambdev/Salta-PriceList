@@ -12,7 +12,7 @@ namespace DAL
 
          DataTable GetAll();
 
-        void Create();
+        void Create(string codigo, int idCategoria, string descripcion, bool activo, byte[] imagen);
 
     }
 }

@@ -87,7 +87,22 @@ namespace BLogic
             return productos;
         }
 
+        public void Create()
+        {
+            try
+            {
+                DAL.RepositorioDeProductos repositorioDeProductos = new DAL.RepositorioDeProductos();
+                repositorioDeProductos.Create(this.Codigo(), this.Categoria().Id(), this.Descripcion(), this.Activo(), this.Imagen());
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+          
+
+
+        }
 
 
 
