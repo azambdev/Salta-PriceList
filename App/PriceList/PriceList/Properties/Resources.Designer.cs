@@ -113,6 +113,26 @@ namespace PriceList.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap limpiarImagenIcono {
+            get {
+                object obj = ResourceManager.GetObject("limpiarImagenIcono", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap limpiarImagenIcono2 {
+            get {
+                object obj = ResourceManager.GetObject("limpiarImagenIcono2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap listaPreciosIconoBoton {
             get {
                 object obj = ResourceManager.GetObject("listaPreciosIconoBoton", resourceCulture);

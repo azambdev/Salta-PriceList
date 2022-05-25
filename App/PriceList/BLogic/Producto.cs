@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,9 +81,19 @@ namespace BLogic
                     esActivo = true;
                 }
                 Categoria categoriaDeProducto = categorias.Find(x => x.Id() == int.Parse(row["IdCategoria"].ToString()));
+                MemoryStream stmBLOBData = new MemoryStream();
+                if (row["imagen"].ToString().Length>0)
+                {
+
+               
+                Byte[] byteBLOBData = new Byte[0];
+                byteBLOBData = (Byte[])(row["imagen"]);
+                 stmBLOBData = new MemoryStream(byteBLOBData);
+                    // picbx_vwid.Image = Image.FromStream(stmBLOBData);
+                }
 
 
-                productos.Add(new Producto(int.Parse(row["id"].ToString()), row["codigo"].ToString(), categoriaDeProducto, row["Descripcion"].ToString(), esActivo, unicode.GetBytes(row["Imagen"].ToString())));
+                productos.Add(new Producto(int.Parse(row["id"].ToString()), row["codigo"].ToString(), categoriaDeProducto, row["Descripcion"].ToString(), esActivo, stmBLOBData.ToArray()));
             }
             return productos;
         }
@@ -98,12 +109,22 @@ namespace BLogic
             {
 
                 throw ex;
-            }
-          
-
-
+            } 
         }
 
+        public void Update()
+        {
+            try
+            {
+                DAL.RepositorioDeProductos repositorioDeProductos = new DAL.RepositorioDeProductos();
+                repositorioDeProductos.Update(this.Codigo(), this.Categoria().Id(), this.Descripcion(), this.Activo(), this.Imagen());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
 
     }

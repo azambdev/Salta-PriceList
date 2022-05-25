@@ -109,8 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\icons\impresoraImagenIcono.png" />
+    <Content Include="Resources\icons\limpiarImagenIcono.png" />
+    <Content Include="Resources\icons\limpiarImagenIcono2.png" />
     <Content Include="Resources\icons\nuevaListaImagenIcono.png" />
     <Content Include="Resources\images\impresoraImagen.png" />
+    <Content Include="Resources\images\limpiarImagen.png" />
     <Content Include="Resources\images\nuevaListaImagen.png" />
     <None Include="Resources\botonBuscar.png" />
     <Content Include="Resources\icons\ferreteriaIcono.ico" />

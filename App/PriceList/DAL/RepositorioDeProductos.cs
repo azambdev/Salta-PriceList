@@ -57,9 +57,8 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@Codigo", codigo);
                         cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
                         cmd.Parameters.AddWithValue("@Descripcion", descripcion);
-                        cmd.Parameters.AddWithValue("@Activo", activo);
+                        cmd.Parameters.AddWithValue("@Activo", activo);    
                         cmd.Parameters.AddWithValue("@Imagen", imagen);
-
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -69,14 +68,40 @@ namespace DAL
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
-
-
         }
 
-       
+
+        public void Update(string codigo, int idCategoria, string descripcion, bool activo, byte[] imagen)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+                using (MySqlConnection con = new MySqlConnection(constr))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("UpdateProducto", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@inCodigo", codigo);
+                        cmd.Parameters.AddWithValue("@inIdCategoria", idCategoria);
+                        cmd.Parameters.AddWithValue("@inDescripcion", descripcion);
+                        cmd.Parameters.AddWithValue("@inActivo", activo);
+                        cmd.Parameters.AddWithValue("@inImagen", imagen);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }
