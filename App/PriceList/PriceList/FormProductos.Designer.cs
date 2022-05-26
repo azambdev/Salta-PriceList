@@ -45,12 +45,12 @@ namespace PriceList
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.txtNombreArchivoFoto = new System.Windows.Forms.TextBox();
+            this.txtCodigoCategoria = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.pictureBoxProducto = new System.Windows.Forms.PictureBox();
-            this.txtCodigoCategoria = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
@@ -227,6 +227,32 @@ namespace PriceList
             this.txtNombreArchivoFoto.TabIndex = 13;
             this.txtNombreArchivoFoto.Visible = false;
             // 
+            // txtCodigoCategoria
+            // 
+            this.txtCodigoCategoria.Enabled = false;
+            this.txtCodigoCategoria.Location = new System.Drawing.Point(147, 102);
+            this.txtCodigoCategoria.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCodigoCategoria.MaxLength = 20;
+            this.txtCodigoCategoria.Name = "txtCodigoCategoria";
+            this.txtCodigoCategoria.ReadOnly = true;
+            this.txtCodigoCategoria.Size = new System.Drawing.Size(57, 28);
+            this.txtCodigoCategoria.TabIndex = 14;
+            this.txtCodigoCategoria.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(208, 106);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.MaxLength = 50;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(23, 22);
+            this.textBox2.TabIndex = 15;
+            this.textBox2.Text = "-";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // toolStripButton3
             // 
             this.toolStripButton3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,6 +288,7 @@ namespace PriceList
             this.toolStripButton2.Size = new System.Drawing.Size(68, 91);
             this.toolStripButton2.Text = "Buscar";
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // pictureBoxProducto
             // 
@@ -273,32 +300,6 @@ namespace PriceList
             this.pictureBoxProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProducto.TabIndex = 3;
             this.pictureBoxProducto.TabStop = false;
-            // 
-            // txtCodigoCategoria
-            // 
-            this.txtCodigoCategoria.Enabled = false;
-            this.txtCodigoCategoria.Location = new System.Drawing.Point(147, 102);
-            this.txtCodigoCategoria.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigoCategoria.MaxLength = 20;
-            this.txtCodigoCategoria.Name = "txtCodigoCategoria";
-            this.txtCodigoCategoria.ReadOnly = true;
-            this.txtCodigoCategoria.Size = new System.Drawing.Size(57, 28);
-            this.txtCodigoCategoria.TabIndex = 14;
-            this.txtCodigoCategoria.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(208, 106);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.MaxLength = 50;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(23, 22);
-            this.textBox2.TabIndex = 15;
-            this.textBox2.Text = "-";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormProductos
             // 

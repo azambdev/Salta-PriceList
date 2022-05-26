@@ -67,7 +67,7 @@ AlicuotaIva decimal,
 PrecioVentaFinal decimal,
 FechaActualizacion Datetime not null
 );
-SELECT * FROM Categorias
+SELECT * FROM Productos;
 insert into Categorias (codigo, descripcion, activo) values ('GE','General',1);
 insert into Categorias (codigo, descripcion, activo) values ('HN','Herramientas Neumáticas',1);
 insert into Categorias (codigo, descripcion, activo) values ('VA','Válvulas',1);
@@ -110,10 +110,25 @@ BEGIN
 select Id, Codigo, IdCategoria, Descripcion, Activo, Imagen from productos;
 END
 
+DELIMITER //
+CREATE PROCEDURE `CreateProducto`(IN Codigo varchar(50), IN IdCategoria int, IN Descripcion varchar(100), IN Activo bit, IN Imagen LongBlob )
+BEGIN
 
+insert into Productos (Codigo, IdCategoria, Descripcion,Activo, Imagen) values (Codigo,IdCategoria,Descripcion,Activo, Imagen );
 
+END
 
+DELIMITER //
+CREATE PROCEDURE `UpdateProducto`(IN inCodigo varchar(50), IN inIdCategoria int, IN inDescripcion varchar(100), IN inActivo bit, IN inImagen LongBlob )
+BEGIN
 
+update productos
+set Descripcion = inDescripcion, 
+Activo = inActivo,
+Imagen = inImagen
+where codigo = inCodigo;
+
+END
 
 
 

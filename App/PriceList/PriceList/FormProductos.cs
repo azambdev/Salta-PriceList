@@ -14,9 +14,12 @@ namespace PriceList
 {
     public partial class FormProductos : Form
     {
+        private static FormProductos _instance;
+
         public FormProductos()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         private List<BLogic.Categoria> _listaCategorias;
@@ -56,6 +59,25 @@ namespace PriceList
                 return;
             }
         }
+
+        public void CargarProductoPorCodigo(string codigo)
+        {
+            try
+            {
+                BLogic.Producto productoConsultado = _productos.Find(x => x.Codigo() == codigo);
+                if (productoConsultado != null)
+                {
+                    CargarProductoEnFormulario(productoConsultado);
+                    BloquearCamposDeFormulario();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
 
         private void BloquearCamposDeFormulario()
         {
@@ -298,5 +320,21 @@ namespace PriceList
             txtCodigoCategoria.Text = _listaCategorias.Find(x => x.Descripcion().ToString() == dropDownCategorias.SelectedItem.ToString()).Codigo();
         }
 
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["FormBuscarProductos"] != null)
+            {
+                // form is opened, so activate it
+                Application.OpenForms["FormBuscarProductos"].Activate();
+            }
+            else
+            {
+                FormBuscarProductos frm = new FormBuscarProductos(_listaCategorias, _productos, this);
+                // frm.MdiParent = this;
+                // frm.Dock = DockStyle.;
+                frm.ShowDialog();
+
+            }
+        }
     }
 }
