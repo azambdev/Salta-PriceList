@@ -33,26 +33,26 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.porcentajeAplicar = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProductosNoAsignados = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridViewProductosAsignados = new System.Windows.Forms.DataGridView();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
+            this.btnAgregarTodos = new System.Windows.Forms.Button();
+            this.btnQuitarTodos = new System.Windows.Forms.Button();
+            this.btnQuitarProducto = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicar)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductosNoAsignados)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductosAsignados)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -88,7 +88,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.porcentajeAplicar);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
@@ -98,12 +98,12 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
-            // numericUpDown1
+            // porcentajeAplicar
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(636, 30);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 22);
-            this.numericUpDown1.TabIndex = 21;
+            this.porcentajeAplicar.Location = new System.Drawing.Point(636, 30);
+            this.porcentajeAplicar.Name = "porcentajeAplicar";
+            this.porcentajeAplicar.Size = new System.Drawing.Size(64, 22);
+            this.porcentajeAplicar.TabIndex = 21;
             // 
             // label1
             // 
@@ -117,11 +117,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 29);
+            this.textBox1.Location = new System.Drawing.Point(130, 29);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 22);
+            this.textBox1.Size = new System.Drawing.Size(388, 22);
             this.textBox1.TabIndex = 19;
             // 
             // label2
@@ -158,7 +158,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView2);
+            this.groupBox3.Controls.Add(this.dataGridViewProductosAsignados);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(618, 188);
             this.groupBox3.Name = "groupBox3";
@@ -167,65 +167,69 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Productos asignados";
             // 
-            // dataGridView2
+            // dataGridViewProductosAsignados
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 38);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(503, 178);
-            this.dataGridView2.TabIndex = 0;
+            this.dataGridViewProductosAsignados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProductosAsignados.Location = new System.Drawing.Point(9, 38);
+            this.dataGridViewProductosAsignados.Name = "dataGridViewProductosAsignados";
+            this.dataGridViewProductosAsignados.RowHeadersWidth = 51;
+            this.dataGridViewProductosAsignados.RowTemplate.Height = 24;
+            this.dataGridViewProductosAsignados.Size = new System.Drawing.Size(503, 178);
+            this.dataGridViewProductosAsignados.TabIndex = 0;
             // 
-            // button1
+            // btnAgregarProducto
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(552, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 34);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "->";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarProducto.Location = new System.Drawing.Point(552, 280);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(47, 34);
+            this.btnAgregarProducto.TabIndex = 7;
+            this.btnAgregarProducto.Text = "->";
+            this.btnAgregarProducto.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
-            // button3
+            // btnAgregarTodos
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(552, 226);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(47, 34);
-            this.button3.TabIndex = 9;
-            this.button3.Text = ">>";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAgregarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarTodos.Location = new System.Drawing.Point(552, 240);
+            this.btnAgregarTodos.Name = "btnAgregarTodos";
+            this.btnAgregarTodos.Size = new System.Drawing.Size(47, 34);
+            this.btnAgregarTodos.TabIndex = 9;
+            this.btnAgregarTodos.Text = ">>";
+            this.btnAgregarTodos.UseVisualStyleBackColor = true;
+            this.btnAgregarTodos.Click += new System.EventHandler(this.btnAgregarTodos_Click);
             // 
-            // button2
+            // btnQuitarTodos
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(552, 346);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 34);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "<<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnQuitarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarTodos.Location = new System.Drawing.Point(552, 360);
+            this.btnQuitarTodos.Name = "btnQuitarTodos";
+            this.btnQuitarTodos.Size = new System.Drawing.Size(47, 34);
+            this.btnQuitarTodos.TabIndex = 11;
+            this.btnQuitarTodos.Text = "<<";
+            this.btnQuitarTodos.UseVisualStyleBackColor = true;
+            this.btnQuitarTodos.Click += new System.EventHandler(this.btnQuitarTodos_Click);
             // 
-            // button4
+            // btnQuitarProducto
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(552, 306);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 34);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "<-";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnQuitarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarProducto.Location = new System.Drawing.Point(552, 320);
+            this.btnQuitarProducto.Name = "btnQuitarProducto";
+            this.btnQuitarProducto.Size = new System.Drawing.Size(47, 34);
+            this.btnQuitarProducto.TabIndex = 10;
+            this.btnQuitarProducto.Text = "<-";
+            this.btnQuitarProducto.UseVisualStyleBackColor = true;
+            this.btnQuitarProducto.Click += new System.EventHandler(this.btnQuitarProducto_Click);
             // 
             // FormNuevaListaPrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 431);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnQuitarTodos);
+            this.Controls.Add(this.btnQuitarProducto);
+            this.Controls.Add(this.btnAgregarTodos);
+            this.Controls.Add(this.btnAgregarProducto);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -238,11 +242,11 @@
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductosNoAsignados)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductosAsignados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,13 +263,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewProductosNoAsignados;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridViewProductosAsignados;
+        private System.Windows.Forms.Button btnAgregarProducto;
+        private System.Windows.Forms.Button btnAgregarTodos;
+        private System.Windows.Forms.Button btnQuitarTodos;
+        private System.Windows.Forms.Button btnQuitarProducto;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown porcentajeAplicar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

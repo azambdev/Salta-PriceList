@@ -25,6 +25,7 @@ Create Table ListaPrecios
 (
 Id int AUTO_INCREMENT primary key,
 Descripcion varchar(50) not null,
+Porcentaje int default 0, 
 Activo bit default 1
 );
 
@@ -36,6 +37,7 @@ CodigoProducto varchar(50),
 FOREIGN KEY (IdListaPrecio) REFERENCES ListaPrecios(Id),
 FOREIGN KEY (CodigoProducto) REFERENCES Productos(Codigo),
 PrecioCosto decimal not null default 0,
+Porcentaje int default 0, 
 AlicuotaIva decimal not null default 21,
 PrecioVentaFinal decimal not null default 0,
 FechaActualizacion Datetime not null
