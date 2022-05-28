@@ -47,6 +47,10 @@ namespace PriceList
                 dropDownCategorias.Items.Add(item.Descripcion());
             }
             //dropDownCategorias.SelectedIndex = 0;
+            dataGridViewResultados.DataSource = _productos.OrderBy(x=>x.Codigo()).Select(p => new { Código = p.Codigo(), Descripción = p.Descripcion(), Categoría = p.Categoria().Descripcion() }).ToList();
+            dataGridViewResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewResultados.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -115,5 +119,6 @@ namespace PriceList
             this.Close();
 
         }
+      
     }
 }

@@ -35,7 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.porcentajeAplicar = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescripcionLista = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProductosNoAsignados = new System.Windows.Forms.DataGridView();
@@ -65,7 +65,7 @@
             this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1149, 94);
+            this.toolStrip1.Size = new System.Drawing.Size(748, 94);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -90,7 +90,7 @@
             // 
             this.groupBox1.Controls.Add(this.porcentajeAplicar);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtDescripcionLista);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(13, 113);
             this.groupBox1.Name = "groupBox1";
@@ -101,6 +101,11 @@
             // porcentajeAplicar
             // 
             this.porcentajeAplicar.Location = new System.Drawing.Point(636, 30);
+            this.porcentajeAplicar.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.porcentajeAplicar.Name = "porcentajeAplicar";
             this.porcentajeAplicar.Size = new System.Drawing.Size(64, 22);
             this.porcentajeAplicar.TabIndex = 21;
@@ -115,14 +120,14 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Aplicar %:";
             // 
-            // textBox1
+            // txtDescripcionLista
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 29);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(388, 22);
-            this.textBox1.TabIndex = 19;
+            this.txtDescripcionLista.Location = new System.Drawing.Point(130, 29);
+            this.txtDescripcionLista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescripcionLista.MaxLength = 50;
+            this.txtDescripcionLista.Name = "txtDescripcionLista";
+            this.txtDescripcionLista.Size = new System.Drawing.Size(388, 22);
+            this.txtDescripcionLista.TabIndex = 19;
             // 
             // label2
             // 
@@ -144,6 +149,7 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos sin asignar";
+            this.groupBox2.Visible = false;
             // 
             // dataGridViewProductosNoAsignados
             // 
@@ -166,6 +172,7 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Productos asignados";
+            this.groupBox3.Visible = false;
             // 
             // dataGridViewProductosAsignados
             // 
@@ -186,6 +193,7 @@
             this.btnAgregarProducto.TabIndex = 7;
             this.btnAgregarProducto.Text = "->";
             this.btnAgregarProducto.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Visible = false;
             this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
             // btnAgregarTodos
@@ -197,6 +205,7 @@
             this.btnAgregarTodos.TabIndex = 9;
             this.btnAgregarTodos.Text = ">>";
             this.btnAgregarTodos.UseVisualStyleBackColor = true;
+            this.btnAgregarTodos.Visible = false;
             this.btnAgregarTodos.Click += new System.EventHandler(this.btnAgregarTodos_Click);
             // 
             // btnQuitarTodos
@@ -208,6 +217,7 @@
             this.btnQuitarTodos.TabIndex = 11;
             this.btnQuitarTodos.Text = "<<";
             this.btnQuitarTodos.UseVisualStyleBackColor = true;
+            this.btnQuitarTodos.Visible = false;
             this.btnQuitarTodos.Click += new System.EventHandler(this.btnQuitarTodos_Click);
             // 
             // btnQuitarProducto
@@ -219,13 +229,14 @@
             this.btnQuitarProducto.TabIndex = 10;
             this.btnQuitarProducto.Text = "<-";
             this.btnQuitarProducto.UseVisualStyleBackColor = true;
+            this.btnQuitarProducto.Visible = false;
             this.btnQuitarProducto.Click += new System.EventHandler(this.btnQuitarProducto_Click);
             // 
             // FormNuevaListaPrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 431);
+            this.ClientSize = new System.Drawing.Size(748, 189);
             this.Controls.Add(this.btnQuitarTodos);
             this.Controls.Add(this.btnQuitarProducto);
             this.Controls.Add(this.btnAgregarTodos);
@@ -234,8 +245,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormNuevaListaPrecios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nueva Lista de Precios";
             this.Load += new System.EventHandler(this.FormNuevaListaPrecios_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -259,7 +272,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescripcionLista;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewProductosNoAsignados;
         private System.Windows.Forms.GroupBox groupBox3;

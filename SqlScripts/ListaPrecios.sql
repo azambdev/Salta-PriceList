@@ -28,7 +28,7 @@ Descripcion varchar(50) not null,
 Porcentaje int default 0, 
 Activo bit default 1
 );
-
+select * from ListaPreciosProductos;
 Create Table ListaPreciosProductos
 (
 Id int AUTO_INCREMENT primary key,
@@ -40,6 +40,7 @@ PrecioCosto decimal not null default 0,
 Porcentaje int default 0, 
 AlicuotaIva decimal not null default 21,
 PrecioVentaFinal decimal not null default 0,
+
 FechaActualizacion Datetime not null
 );
 
@@ -99,11 +100,9 @@ Select id, codigo, descripcion, activo from Categorias;
 END
 
 DELIMITER //
-CREATE PROCEDURE `GetListasDePrecios`()
+CREATE PROCEDURE `GetListaPrecios`()
 BEGIN
-
-Select id, descripcion, activo from listaprecios;
-
+Select id, descripcion, porcentaje,  activo from listaprecios;
 END
 
 DELIMITER //
@@ -132,7 +131,34 @@ where codigo = inCodigo;
 
 END
 
+DELIMITER //
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CreateListaDePrecios`(in inDescripcion varchar(50), IN inPorcentaje int)
+BEGIN
+DECLARE idListaInsertado int;
+	
+insert into listaprecios (Descripcion, Porcentaje, Activo) values (inDescripcion, inPorcentaje, 1);
+SET idListaInsertado:= LAST_INSERT_ID();
+    
 
+insert into listapreciosProductos (idListaPrecio, CodigoProducto, precioCosto, Porcentaje, AlicuotaIva, precioVentaFinal, FechaActualizacion) 
+select idListaInsertado, codigo, 0, inPorcentaje, 21,0,now()
+from productos;
 
+END
+DELIMITER //
+
+CREATE PROCEDURE `GetListaPreciosProductos`()
+BEGIN
+
+select lp.id as IdListaPrecio, lp.Descripcion as ListaPrecioDescripcion, lp.Porcentaje as PorcentajeListaPrecios, lpp.id as IdListaPreciosProductos, lpp.idlistaprecio as lppIdListaPrecio, lpp.CodigoProducto,prod.Id as IdProducto, prod.Descripcion as DescripcionProducto, lpp.precioCosto,
+ lpp.porcentaje, lpp.AlicuotaIva, lpp.PrecioVentaFinal, lpp.FechaActualizacion, Cat.Id as IdCategoria, Cat.Codigo as CodigoCategoria, Cat.Descripcion DescripcionCategoria
+from listapreciosproductos lpp, productos prod, categorias cat, listaprecios lp
+where lpp.CodigoProducto = prod.Codigo
+And prod.IdCategoria = cat.Id
+AND lp.id = lpp.IdListaPrecio
+and prod.activo=1
+order by lpp.CodigoProducto asc;
+
+END
 
