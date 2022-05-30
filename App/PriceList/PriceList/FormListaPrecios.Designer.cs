@@ -29,7 +29,6 @@ namespace PriceList
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListaPrecios));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -46,24 +45,24 @@ namespace PriceList
             this.dropDownListaDePrecios = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.gridViewProductosAsociados = new System.Windows.Forms.DataGridView();
             this.dropDownCategorias = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtCodigoProductoSeleccionado = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCostoProductoSeleccionado = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.AlicuotaIvaProductoSeleccionado = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.porcentajeAplicarProductoSeleccionado = new System.Windows.Forms.NumericUpDown();
             this.precioVentaFinalProductoSeleccionado = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.porcentajeAplicarProductoSeleccionado = new System.Windows.Forms.NumericUpDown();
+            this.AlicuotaIvaProductoSeleccionado = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCostoProductoSeleccionado = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCodigoProductoSeleccionado = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -203,6 +202,7 @@ namespace PriceList
             this.dropDownListaDePrecios.Name = "dropDownListaDePrecios";
             this.dropDownListaDePrecios.Size = new System.Drawing.Size(377, 26);
             this.dropDownListaDePrecios.TabIndex = 14;
+            this.dropDownListaDePrecios.SelectedIndexChanged += new System.EventHandler(this.dropDownListaDePrecios_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -210,7 +210,7 @@ namespace PriceList
             this.label4.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(7, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 25);
+            this.label4.Size = new System.Drawing.Size(127, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Descripción:";
             // 
@@ -233,17 +233,28 @@ namespace PriceList
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos asociados";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(144, 37);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.MaxLength = 20;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(217, 27);
+            this.textBox1.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(63, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 20);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Código:";
+            // 
             // gridViewProductosAsociados
             // 
             this.gridViewProductosAsociados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridViewProductosAsociados.DefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewProductosAsociados.Location = new System.Drawing.Point(11, 134);
             this.gridViewProductosAsociados.Margin = new System.Windows.Forms.Padding(4);
             this.gridViewProductosAsociados.Name = "gridViewProductosAsociados";
@@ -313,44 +324,65 @@ namespace PriceList
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Precios";
             // 
-            // textBox1
+            // porcentajeAplicarProductoSeleccionado
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 37);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.MaxLength = 20;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 27);
-            this.textBox1.TabIndex = 20;
+            this.porcentajeAplicarProductoSeleccionado.Location = new System.Drawing.Point(94, 153);
+            this.porcentajeAplicarProductoSeleccionado.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.porcentajeAplicarProductoSeleccionado.Name = "porcentajeAplicarProductoSeleccionado";
+            this.porcentajeAplicarProductoSeleccionado.Size = new System.Drawing.Size(84, 27);
+            this.porcentajeAplicarProductoSeleccionado.TabIndex = 31;
             // 
-            // label5
+            // precioVentaFinalProductoSeleccionado
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(63, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 20);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Código:";
+            this.precioVentaFinalProductoSeleccionado.Location = new System.Drawing.Point(153, 260);
+            this.precioVentaFinalProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.precioVentaFinalProductoSeleccionado.MaxLength = 6;
+            this.precioVentaFinalProductoSeleccionado.Name = "precioVentaFinalProductoSeleccionado";
+            this.precioVentaFinalProductoSeleccionado.Size = new System.Drawing.Size(151, 27);
+            this.precioVentaFinalProductoSeleccionado.TabIndex = 30;
             // 
-            // txtCodigoProductoSeleccionado
+            // label10
             // 
-            this.txtCodigoProductoSeleccionado.Location = new System.Drawing.Point(93, 46);
-            this.txtCodigoProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCodigoProductoSeleccionado.MaxLength = 20;
-            this.txtCodigoProductoSeleccionado.Name = "txtCodigoProductoSeleccionado";
-            this.txtCodigoProductoSeleccionado.ReadOnly = true;
-            this.txtCodigoProductoSeleccionado.Size = new System.Drawing.Size(211, 27);
-            this.txtCodigoProductoSeleccionado.TabIndex = 22;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(8, 263);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(141, 20);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "$ Venta Final:";
             // 
-            // label6
+            // AlicuotaIvaProductoSeleccionado
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 20);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Código:";
+            this.AlicuotaIvaProductoSeleccionado.Location = new System.Drawing.Point(94, 205);
+            this.AlicuotaIvaProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AlicuotaIvaProductoSeleccionado.MaxLength = 6;
+            this.AlicuotaIvaProductoSeleccionado.Name = "AlicuotaIvaProductoSeleccionado";
+            this.AlicuotaIvaProductoSeleccionado.Size = new System.Drawing.Size(89, 27);
+            this.AlicuotaIvaProductoSeleccionado.TabIndex = 28;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 208);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 20);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Al. IVA:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(7, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 20);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "% Gan:";
             // 
             // txtCostoProductoSeleccionado
             // 
@@ -371,65 +403,25 @@ namespace PriceList
             this.label7.TabIndex = 23;
             this.label7.Text = "$ Costo:";
             // 
-            // label8
+            // txtCodigoProductoSeleccionado
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(7, 155);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 25);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "% Gan:";
+            this.txtCodigoProductoSeleccionado.Location = new System.Drawing.Point(93, 46);
+            this.txtCodigoProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCodigoProductoSeleccionado.MaxLength = 20;
+            this.txtCodigoProductoSeleccionado.Name = "txtCodigoProductoSeleccionado";
+            this.txtCodigoProductoSeleccionado.ReadOnly = true;
+            this.txtCodigoProductoSeleccionado.Size = new System.Drawing.Size(211, 27);
+            this.txtCodigoProductoSeleccionado.TabIndex = 22;
             // 
-            // AlicuotaIvaProductoSeleccionado
+            // label6
             // 
-            this.AlicuotaIvaProductoSeleccionado.Location = new System.Drawing.Point(94, 205);
-            this.AlicuotaIvaProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AlicuotaIvaProductoSeleccionado.MaxLength = 6;
-            this.AlicuotaIvaProductoSeleccionado.Name = "AlicuotaIvaProductoSeleccionado";
-            this.AlicuotaIvaProductoSeleccionado.Size = new System.Drawing.Size(89, 27);
-            this.AlicuotaIvaProductoSeleccionado.TabIndex = 28;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 208);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 25);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "Al. IVA:";
-            // 
-            // precioVentaFinalProductoSeleccionado
-            // 
-            this.precioVentaFinalProductoSeleccionado.Location = new System.Drawing.Point(153, 260);
-            this.precioVentaFinalProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.precioVentaFinalProductoSeleccionado.MaxLength = 6;
-            this.precioVentaFinalProductoSeleccionado.Name = "precioVentaFinalProductoSeleccionado";
-            this.precioVentaFinalProductoSeleccionado.Size = new System.Drawing.Size(151, 27);
-            this.precioVentaFinalProductoSeleccionado.TabIndex = 30;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 263);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(176, 25);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "$ Venta Final:";
-            // 
-            // porcentajeAplicarProductoSeleccionado
-            // 
-            this.porcentajeAplicarProductoSeleccionado.Location = new System.Drawing.Point(94, 153);
-            this.porcentajeAplicarProductoSeleccionado.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.porcentajeAplicarProductoSeleccionado.Name = "porcentajeAplicarProductoSeleccionado";
-            this.porcentajeAplicarProductoSeleccionado.Size = new System.Drawing.Size(84, 27);
-            this.porcentajeAplicarProductoSeleccionado.TabIndex = 31;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 20);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Código:";
             // 
             // FormListaPrecios
             // 

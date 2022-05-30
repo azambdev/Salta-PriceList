@@ -12,6 +12,7 @@ namespace PriceList
 {
     public partial class FormListaPrecios : Form
     {
+        List<BLogic.ListaDePreciosProductos> _listasDePreciosProductos = new List<BLogic.ListaDePreciosProductos>();
         public FormListaPrecios()
         {
             InitializeComponent();
@@ -76,16 +77,16 @@ namespace PriceList
                 }
                 BLogic.ListaDePreciosProductos listaDePreciosProductos = new BLogic.ListaDePreciosProductos();
                 List<BLogic.ListaDePreciosProductos> listasDePreciosProductos = listaDePreciosProductos.GetAll();
+                _listasDePreciosProductos = listasDePreciosProductos;
 
+                //if (listasDePreciosProductos.Any())
+                //{
+                //    gridViewProductosAsociados.DataSource = listasDePreciosProductos.Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+                //    //  gridViewProductosAsociados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                //    //  gridViewProductosAsociados.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+                //}
 
-                if (listasDePreciosProductos.Any())
-                {
-                    gridViewProductosAsociados.DataSource = listasDePreciosProductos.Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
-                    //  gridViewProductosAsociados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    //  gridViewProductosAsociados.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-                }
-
-
+                LimpiarCamposPrecios();
 
             }
             catch (Exception ex)
@@ -98,10 +99,32 @@ namespace PriceList
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (gridViewProductosAsociados.Rows.Count == 0)
+
+            try
             {
+
+                if (gridViewProductosAsociados.Rows.Count == 0)
+                {
+                    return;
+                }
+
+                if (gridViewProductosAsociados.SelectedRows.Count == 0)
+                {
+                    
+                        return;                    
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+
 
 
         }
@@ -110,8 +133,6 @@ namespace PriceList
         {
             try
             {
-
-
 
                 if (gridViewProductosAsociados.Rows.Count == 0)
                 {
@@ -128,7 +149,7 @@ namespace PriceList
                 decimal alicuotaIva = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[5].Value.ToString());
                 AlicuotaIvaProductoSeleccionado.Text = alicuotaIva.ToString();
                 decimal precioFinal = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[6].Value.ToString());
-                precioVentaFinalProductoSeleccionado.Text=precioFinal.ToString();
+                precioVentaFinalProductoSeleccionado.Text = precioFinal.ToString();
             }
             catch (Exception ex)
             {
@@ -136,6 +157,26 @@ namespace PriceList
                 MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+        }
+
+        private void dropDownListaDePrecios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+                      gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x =>x.ListaDePrecio().Descripcion()== dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+
+            LimpiarCamposPrecios();
+
+        }
+
+        private void LimpiarCamposPrecios()
+        {
+            txtCodigoProductoSeleccionado.Clear();
+            txtCostoProductoSeleccionado.Clear();
+            porcentajeAplicarProductoSeleccionado.Value = 0;
+            AlicuotaIvaProductoSeleccionado.Text = "0";
+            precioVentaFinalProductoSeleccionado.Text = "0";
+            gridViewProductosAsociados.ClearSelection();
 
         }
     }

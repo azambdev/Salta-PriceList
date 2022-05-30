@@ -86,9 +86,10 @@ namespace BLogic
             return listaDePreciosProductosExistentes;
         }
 
-
-
-
+        public ListaDePrecio ListaDePrecio()
+        {
+            return this._listadePrecios;
+        }
 
 
     }
