@@ -334,13 +334,16 @@ namespace PriceList
             this.porcentajeAplicarProductoSeleccionado.Name = "porcentajeAplicarProductoSeleccionado";
             this.porcentajeAplicarProductoSeleccionado.Size = new System.Drawing.Size(84, 27);
             this.porcentajeAplicarProductoSeleccionado.TabIndex = 31;
+            this.porcentajeAplicarProductoSeleccionado.ValueChanged += new System.EventHandler(this.porcentajeAplicarProductoSeleccionado_ValueChanged);
             // 
             // txtprecioVentaFinalProductoSeleccionado
             // 
             this.txtprecioVentaFinalProductoSeleccionado.Location = new System.Drawing.Point(153, 260);
             this.txtprecioVentaFinalProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtprecioVentaFinalProductoSeleccionado.MaxLength = 6;
+            this.txtprecioVentaFinalProductoSeleccionado.MaxLength = 10;
             this.txtprecioVentaFinalProductoSeleccionado.Name = "txtprecioVentaFinalProductoSeleccionado";
+            this.txtprecioVentaFinalProductoSeleccionado.ReadOnly = true;
+            this.txtprecioVentaFinalProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtprecioVentaFinalProductoSeleccionado.Size = new System.Drawing.Size(151, 27);
             this.txtprecioVentaFinalProductoSeleccionado.TabIndex = 30;
             // 
@@ -360,8 +363,11 @@ namespace PriceList
             this.txtAlicuotaIvaProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAlicuotaIvaProductoSeleccionado.MaxLength = 6;
             this.txtAlicuotaIvaProductoSeleccionado.Name = "txtAlicuotaIvaProductoSeleccionado";
+            this.txtAlicuotaIvaProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAlicuotaIvaProductoSeleccionado.Size = new System.Drawing.Size(89, 27);
             this.txtAlicuotaIvaProductoSeleccionado.TabIndex = 28;
+            this.txtAlicuotaIvaProductoSeleccionado.Text = "0";
+            this.txtAlicuotaIvaProductoSeleccionado.TextChanged += new System.EventHandler(this.txtAlicuotaIvaProductoSeleccionado_TextChanged);
             // 
             // label9
             // 
@@ -387,10 +393,13 @@ namespace PriceList
             // 
             this.txtCostoProductoSeleccionado.Location = new System.Drawing.Point(93, 97);
             this.txtCostoProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCostoProductoSeleccionado.MaxLength = 6;
+            this.txtCostoProductoSeleccionado.MaxLength = 9;
             this.txtCostoProductoSeleccionado.Name = "txtCostoProductoSeleccionado";
-            this.txtCostoProductoSeleccionado.Size = new System.Drawing.Size(89, 27);
+            this.txtCostoProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCostoProductoSeleccionado.Size = new System.Drawing.Size(137, 27);
             this.txtCostoProductoSeleccionado.TabIndex = 24;
+            this.txtCostoProductoSeleccionado.Text = "0";
+            this.txtCostoProductoSeleccionado.TextChanged += new System.EventHandler(this.txtCostoProductoSeleccionado_TextChanged);
             // 
             // label7
             // 

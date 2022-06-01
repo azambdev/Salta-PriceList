@@ -215,6 +215,7 @@ namespace PriceList
         {
             txtCodigoProductoSeleccionado.Clear();
             txtCostoProductoSeleccionado.Clear();
+            txtCostoProductoSeleccionado.Text = "0";
             porcentajeAplicarProductoSeleccionado.Value = 0;
             txtAlicuotaIvaProductoSeleccionado.Text = "0";
             txtprecioVentaFinalProductoSeleccionado.Text = "0";
@@ -251,6 +252,67 @@ namespace PriceList
                 MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            //numericUpDown1.Text = numericUpDown1.Text.Replace(',', '.');
+        }
+
+        private void numericUpDown1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.Handled = e.KeyChar == '.';
+            }
+        }
+
+        private void txtCostoProductoSeleccionado_TextChanged(object sender, EventArgs e)
+        {
+            CalcularPrecioFinal();
+        }
+
+        private void CalcularPrecioFinal()
+        {
+
+            try
+            {
+
+           
+
+
+            decimal precioFinalCalculado = 0;
+            decimal costoDelProducto = 0;
+            if (txtCostoProductoSeleccionado.Text!="")
+            {
+                 costoDelProducto = decimal.Parse(txtCostoProductoSeleccionado.Text);
+            }
+                       
+            decimal ivaDelProducto = decimal.Parse(txtAlicuotaIvaProductoSeleccionado.Text);
+            decimal porcentajeAgregado = decimal.Parse(porcentajeAplicarProductoSeleccionado.Value.ToString());
+
+            decimal precioConIva = (costoDelProducto * ivaDelProducto) / 100 + costoDelProducto;
+            precioFinalCalculado = (precioConIva * porcentajeAgregado) / 100 + precioConIva;
+
+            txtprecioVentaFinalProductoSeleccionado.Text = precioFinalCalculado.ToString("#.##");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+        }
+
+        private void porcentajeAplicarProductoSeleccionado_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularPrecioFinal();
+        }
+
+        private void txtAlicuotaIvaProductoSeleccionado_TextChanged(object sender, EventArgs e)
+        {
+            CalcularPrecioFinal();
         }
     }
 }
