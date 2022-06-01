@@ -86,6 +86,23 @@ namespace BLogic
             return listaDePreciosProductosExistentes;
         }
 
+
+        public void Update()
+        {
+
+            try
+            {
+                DAL.RepositorioDeListasDePrecios repositorioDeListasDePrecios = new DAL.RepositorioDeListasDePrecios();
+                repositorioDeListasDePrecios.Update(this.ListaDePrecio().Id(),this.Producto().Codigo(), this._porcentaje, this._precioCosto, this._alicuotaIva, this._precioVentaFinal);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         public ListaDePrecio ListaDePrecio()
         {
             return this._listadePrecios;

@@ -162,3 +162,23 @@ order by lpp.CodigoProducto asc;
 
 END
 
+DELIMITER //
+CREATE PROCEDURE `UpdateListaPreciosProductos`(in inIdListaPrecio int, in inCodigoProducto varchar(50), in inPrecioCosto decimal, in inPorcentaje int, in inAlicuotaIva decimal, in inPrecioVentaFinal decimal )
+BEGIN
+
+update listaPreciosProductos
+set PrecioCosto = inPrecioCosto,
+Porcentaje = inPorcentaje, 
+PrecioCosto = inPrecioCosto, 
+AlicuotaIva = inAlicuotaIva,
+PrecioVentaFinal = inPrecioVentaFinal,
+FechaActualizacion = now()
+where IdListaPrecio = inIdListaPrecio
+and CodigoProducto = inCodigoProducto;
+
+END
+
+
+
+
+

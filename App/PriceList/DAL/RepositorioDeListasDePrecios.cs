@@ -66,22 +66,24 @@ namespace DAL
         }
 
 
-        public void Update(string codigo, int idCategoria, string descripcion, bool activo, byte[] imagen)
+        public void Update(int idListaPrecio, string codigoProducto, int porcentaje, decimal precioCosto,  decimal alicuotaIva, decimal precioVentaFinal)
         {
             try
-            {
+            {           
+
                 DataTable dt = new DataTable();
                 string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
                 using (MySqlConnection con = new MySqlConnection(constr))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("UpdateProducto", con))
+                    using (MySqlCommand cmd = new MySqlCommand("UpdateListaPreciosProductos", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@inCodigo", codigo);
-                        cmd.Parameters.AddWithValue("@inIdCategoria", idCategoria);
-                        cmd.Parameters.AddWithValue("@inDescripcion", descripcion);
-                        cmd.Parameters.AddWithValue("@inActivo", activo);
-                        cmd.Parameters.AddWithValue("@inImagen", imagen);
+                        cmd.Parameters.AddWithValue("@inIdListaPrecio", idListaPrecio);
+                        cmd.Parameters.AddWithValue("@inCodigoProducto", codigoProducto);
+                        cmd.Parameters.AddWithValue("@inPrecioCosto", precioCosto);
+                        cmd.Parameters.AddWithValue("@inPorcentaje", porcentaje);
+                        cmd.Parameters.AddWithValue("@inAlicuotaIva", alicuotaIva);
+                        cmd.Parameters.AddWithValue("@inPrecioVentaFinal", precioVentaFinal);
                         con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();

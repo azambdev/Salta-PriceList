@@ -23,6 +23,12 @@ namespace BLogic
 
         }
 
+
+        public Producto(string codigo)
+        {
+            _codigo = codigo;
+        }
+
         public Producto(int id, string codigo, Categoria categoria, string descripcion, bool activo, byte[] imagen)
         {
             _id = id;

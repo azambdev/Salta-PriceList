@@ -22,6 +22,10 @@ namespace BLogic
 
         }
 
+        public int Id()
+        {
+            return this._id;
+        }
 
         public string Descripcion()
         {

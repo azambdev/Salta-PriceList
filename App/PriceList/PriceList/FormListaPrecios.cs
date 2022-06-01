@@ -108,14 +108,31 @@ namespace PriceList
                     return;
                 }
 
-                if (gridViewProductosAsociados.SelectedRows.Count == 0)
+                if (gridViewProductosAsociados.SelectedCells.Count == 0)
                 {
-                    
-                        return;                    
+
+                    return;
                 }
 
+                BLogic.Producto productoSeleccionado = new BLogic.Producto(CodigoProductoSeleccionado());
+
+                BLogic.ListaDePrecio listaPrecioSeleccionada = _listaDePreciosExistentes.Find(x => x.Descripcion().ToString() == dropDownListaDePrecios.SelectedItem.ToString());
+
+                BLogic.ListaDePreciosProductos listaPrecioProductoSeleccionada = new BLogic.ListaDePreciosProductos(0, listaPrecioSeleccionada, productoSeleccionado, decimal.Parse(CostoproductoSeleccionado()), int.Parse(PorcentajeAplicarProductoSeleccionado().ToString()), decimal.Parse(AlicuotaIvaProductoSeleccionado()), decimal.Parse(PrecioVentaFinalProductoSeleccionado()), DateTime.Now);
+                listaPrecioProductoSeleccionada.Update();
+
+                BLogic.ListaDePreciosProductos listaDePreciosProductos = new BLogic.ListaDePreciosProductos();
+                List<BLogic.ListaDePreciosProductos> listasDePreciosProductos = listaDePreciosProductos.GetAll();
+                _listasDePreciosProductos = listasDePreciosProductos;
+                gridViewProductosAsociados.DataSource = null;
+               gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
 
 
+
+                LimpiarCamposPrecios();
+
+                MessageBox.Show("Lista de precios actualizada correctamente", "Validación de Operación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
 
             }
             catch (Exception ex)
@@ -127,6 +144,31 @@ namespace PriceList
 
 
 
+        }
+
+        private string PrecioVentaFinalProductoSeleccionado()
+        {
+            return txtprecioVentaFinalProductoSeleccionado.Text.Trim();
+        }
+
+        private string AlicuotaIvaProductoSeleccionado()
+        {
+            return txtAlicuotaIvaProductoSeleccionado.Text.Trim();
+        }
+
+        private decimal PorcentajeAplicarProductoSeleccionado()
+        {
+            return porcentajeAplicarProductoSeleccionado.Value;
+        }
+
+        private string CostoproductoSeleccionado()
+        {
+            return txtCostoProductoSeleccionado.Text.Trim();
+        }
+
+        private string CodigoProductoSeleccionado()
+        {
+            return txtCodigoProductoSeleccionado.Text.Trim();
         }
 
         private void gridViewProductosAsociados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -147,9 +189,9 @@ namespace PriceList
                 int porcentajeGanancia = int.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[4].Value.ToString());
                 porcentajeAplicarProductoSeleccionado.Value = porcentajeGanancia;
                 decimal alicuotaIva = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[5].Value.ToString());
-                AlicuotaIvaProductoSeleccionado.Text = alicuotaIva.ToString();
+                txtAlicuotaIvaProductoSeleccionado.Text = alicuotaIva.ToString();
                 decimal precioFinal = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[6].Value.ToString());
-                precioVentaFinalProductoSeleccionado.Text = precioFinal.ToString();
+                txtprecioVentaFinalProductoSeleccionado.Text = precioFinal.ToString();
             }
             catch (Exception ex)
             {
@@ -174,10 +216,41 @@ namespace PriceList
             txtCodigoProductoSeleccionado.Clear();
             txtCostoProductoSeleccionado.Clear();
             porcentajeAplicarProductoSeleccionado.Value = 0;
-            AlicuotaIvaProductoSeleccionado.Text = "0";
-            precioVentaFinalProductoSeleccionado.Text = "0";
+            txtAlicuotaIvaProductoSeleccionado.Text = "0";
+            txtprecioVentaFinalProductoSeleccionado.Text = "0";
             gridViewProductosAsociados.ClearSelection();
+           
 
+        }
+
+        private void gridViewProductosAsociados_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (gridViewProductosAsociados.Rows.Count == 0)
+                {
+                    return;
+                }
+                int rowindex = gridViewProductosAsociados.CurrentCell.RowIndex;
+                int columnindex = gridViewProductosAsociados.CurrentCell.ColumnIndex;
+                string codigoDeProducto = gridViewProductosAsociados.Rows[rowindex].Cells[0].Value.ToString();
+                txtCodigoProductoSeleccionado.Text = codigoDeProducto;
+                decimal costoDeProducto = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[3].Value.ToString());
+                txtCostoProductoSeleccionado.Text = costoDeProducto.ToString();
+                int porcentajeGanancia = int.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[4].Value.ToString());
+                porcentajeAplicarProductoSeleccionado.Value = porcentajeGanancia;
+                decimal alicuotaIva = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[5].Value.ToString());
+                txtAlicuotaIvaProductoSeleccionado.Text = alicuotaIva.ToString();
+                decimal precioFinal = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[6].Value.ToString());
+                txtprecioVentaFinalProductoSeleccionado.Text = precioFinal.ToString();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }
