@@ -29,10 +29,10 @@ namespace PriceList
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListaPrecios));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -62,7 +62,6 @@ namespace PriceList
             this.label7 = new System.Windows.Forms.Label();
             this.txtCodigoProductoSeleccionado = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -101,6 +100,11 @@ namespace PriceList
             this.toolStripButton3.Text = "Nueva";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 94);
             // 
             // toolStripButton1
             // 
@@ -245,14 +249,6 @@ namespace PriceList
             // gridViewProductosAsociados
             // 
             this.gridViewProductosAsociados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridViewProductosAsociados.DefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewProductosAsociados.Location = new System.Drawing.Point(11, 134);
             this.gridViewProductosAsociados.Margin = new System.Windows.Forms.Padding(4);
             this.gridViewProductosAsociados.Name = "gridViewProductosAsociados";
@@ -271,6 +267,7 @@ namespace PriceList
             this.dropDownCategorias.Name = "dropDownCategorias";
             this.dropDownCategorias.Size = new System.Drawing.Size(350, 26);
             this.dropDownCategorias.TabIndex = 17;
+            this.dropDownCategorias.SelectedIndexChanged += new System.EventHandler(this.dropDownCategorias_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -325,6 +322,7 @@ namespace PriceList
             // 
             // porcentajeAplicarProductoSeleccionado
             // 
+            this.porcentajeAplicarProductoSeleccionado.DecimalPlaces = 2;
             this.porcentajeAplicarProductoSeleccionado.Location = new System.Drawing.Point(94, 153);
             this.porcentajeAplicarProductoSeleccionado.Maximum = new decimal(new int[] {
             200,
@@ -332,9 +330,11 @@ namespace PriceList
             0,
             0});
             this.porcentajeAplicarProductoSeleccionado.Name = "porcentajeAplicarProductoSeleccionado";
-            this.porcentajeAplicarProductoSeleccionado.Size = new System.Drawing.Size(84, 27);
+            this.porcentajeAplicarProductoSeleccionado.Size = new System.Drawing.Size(87, 27);
             this.porcentajeAplicarProductoSeleccionado.TabIndex = 31;
+            this.porcentajeAplicarProductoSeleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.porcentajeAplicarProductoSeleccionado.ValueChanged += new System.EventHandler(this.porcentajeAplicarProductoSeleccionado_ValueChanged);
+            this.porcentajeAplicarProductoSeleccionado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.porcentajeAplicarProductoSeleccionado_KeyPress);
             // 
             // txtprecioVentaFinalProductoSeleccionado
             // 
@@ -355,7 +355,7 @@ namespace PriceList
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 20);
             this.label10.TabIndex = 29;
-            this.label10.Text = "$ Venta Final:";
+            this.label10.Text = "Venta Final $:";
             // 
             // txtAlicuotaIvaProductoSeleccionado
             // 
@@ -364,10 +364,11 @@ namespace PriceList
             this.txtAlicuotaIvaProductoSeleccionado.MaxLength = 6;
             this.txtAlicuotaIvaProductoSeleccionado.Name = "txtAlicuotaIvaProductoSeleccionado";
             this.txtAlicuotaIvaProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtAlicuotaIvaProductoSeleccionado.Size = new System.Drawing.Size(89, 27);
+            this.txtAlicuotaIvaProductoSeleccionado.Size = new System.Drawing.Size(87, 27);
             this.txtAlicuotaIvaProductoSeleccionado.TabIndex = 28;
             this.txtAlicuotaIvaProductoSeleccionado.Text = "0";
             this.txtAlicuotaIvaProductoSeleccionado.TextChanged += new System.EventHandler(this.txtAlicuotaIvaProductoSeleccionado_TextChanged);
+            this.txtAlicuotaIvaProductoSeleccionado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlicuotaIvaProductoSeleccionado_KeyPress);
             // 
             // label9
             // 
@@ -393,10 +394,10 @@ namespace PriceList
             // 
             this.txtCostoProductoSeleccionado.Location = new System.Drawing.Point(93, 97);
             this.txtCostoProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCostoProductoSeleccionado.MaxLength = 9;
+            this.txtCostoProductoSeleccionado.MaxLength = 10;
             this.txtCostoProductoSeleccionado.Name = "txtCostoProductoSeleccionado";
             this.txtCostoProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCostoProductoSeleccionado.Size = new System.Drawing.Size(137, 27);
+            this.txtCostoProductoSeleccionado.Size = new System.Drawing.Size(111, 27);
             this.txtCostoProductoSeleccionado.TabIndex = 24;
             this.txtCostoProductoSeleccionado.Text = "0";
             this.txtCostoProductoSeleccionado.TextChanged += new System.EventHandler(this.txtCostoProductoSeleccionado_TextChanged);
@@ -430,11 +431,6 @@ namespace PriceList
             this.label6.Size = new System.Drawing.Size(82, 20);
             this.label6.TabIndex = 21;
             this.label6.Text = "Código:";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 94);
             // 
             // FormListaPrecios
             // 

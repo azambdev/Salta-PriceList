@@ -117,6 +117,13 @@ BEGIN
 
 insert into Productos (Codigo, IdCategoria, Descripcion,Activo, Imagen) values (Codigo,IdCategoria,Descripcion,Activo, Imagen );
 
+insert into listapreciosProductos (idListaPrecio, CodigoProducto, precioCosto, Porcentaje, AlicuotaIva, precioVentaFinal, FechaActualizacion) 
+select distinct lp.id as IdListaPrecio, Codigo, 0, lp.Porcentaje, 21,0,now()
+from productos p, listaprecios lp, listapreciosproductos lpp
+where p.codigo = lpp.codigoproducto
+or lpp.codigoproducto is null
+and lpp.idListaprecio = lp.id
+and p.codigo = Codigo;
 END
 
 DELIMITER //
@@ -177,8 +184,6 @@ where IdListaPrecio = inIdListaPrecio
 and CodigoProducto = inCodigoProducto;
 
 END
-
-
-
+DELIMITER //
 
 

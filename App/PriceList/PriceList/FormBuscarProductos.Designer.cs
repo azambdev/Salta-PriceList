@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigoProducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.dropDownCategorias = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -69,7 +68,6 @@
             this.dataGridViewResultados.RowTemplate.Height = 24;
             this.dataGridViewResultados.Size = new System.Drawing.Size(709, 172);
             this.dataGridViewResultados.TabIndex = 0;
-      
             this.dataGridViewResultados.DoubleClick += new System.EventHandler(this.dataGridViewResultados_DoubleClick);
             // 
             // groupBox2
@@ -78,7 +76,6 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtCodigoProducto);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.checkBoxActivo);
             this.groupBox2.Controls.Add(this.dropDownCategorias);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,18 +125,6 @@
             this.label1.Size = new System.Drawing.Size(82, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "Código:";
-            // 
-            // checkBoxActivo
-            // 
-            this.checkBoxActivo.AutoSize = true;
-            this.checkBoxActivo.Location = new System.Drawing.Point(499, 138);
-            this.checkBoxActivo.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxActivo.Name = "checkBoxActivo";
-            this.checkBoxActivo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxActivo.Size = new System.Drawing.Size(87, 22);
-            this.checkBoxActivo.TabIndex = 15;
-            this.checkBoxActivo.Text = ":Activo";
-            this.checkBoxActivo.UseVisualStyleBackColor = true;
             // 
             // dropDownCategorias
             // 
@@ -243,7 +228,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ComboBox dropDownCategorias;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBoxActivo;
         private System.Windows.Forms.TextBox txtDescripcionProducto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodigoProducto;

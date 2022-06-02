@@ -71,7 +71,7 @@ namespace PriceList
                 {
                     foreach (var item in listaCategorias)
                     {
-                        dropDownCategorias.Items.Add(item.Codigo() + " - " + item.Descripcion());
+                        dropDownCategorias.Items.Add(/*item.Codigo() + " - " +*/ item.Descripcion());
                     }
                     dropDownCategorias.SelectedIndex = 0;
                 }
@@ -87,7 +87,7 @@ namespace PriceList
                 //}
 
                 LimpiarCamposPrecios();
-
+                dropDownCategorias.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -206,7 +206,8 @@ namespace PriceList
         {
 
                       gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x =>x.ListaDePrecio().Descripcion()== dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
-
+            lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+            dropDownCategorias.SelectedIndex = -1;
             LimpiarCamposPrecios();
 
         }
@@ -220,6 +221,7 @@ namespace PriceList
             txtAlicuotaIvaProductoSeleccionado.Text = "0";
             txtprecioVentaFinalProductoSeleccionado.Text = "0";
             gridViewProductosAsociados.ClearSelection();
+           
            
 
         }
@@ -277,10 +279,7 @@ namespace PriceList
 
             try
             {
-
-           
-
-
+                       
             decimal precioFinalCalculado = 0;
             decimal costoDelProducto = 0;
             if (txtCostoProductoSeleccionado.Text!="")
@@ -313,6 +312,51 @@ namespace PriceList
         private void txtAlicuotaIvaProductoSeleccionado_TextChanged(object sender, EventArgs e)
         {
             CalcularPrecioFinal();
+        }
+
+        private void porcentajeAplicarProductoSeleccionado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
+        }
+
+        private void txtAlicuotaIvaProductoSeleccionado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //string result = "";
+            //char[] validChars = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.' }; // these are ok
+            //foreach (char c in txtAlicuotaIvaProductoSeleccionado.Text) // check each character in the user's input
+            //{
+            //    if (Array.IndexOf(validChars, c) != -1)
+            //    {
+            //        result += c; // if this is ok, then add it to the result
+            //    }
+            //    else
+            //    {
+            //        txtAlicuotaIvaProductoSeleccionado.Text = result; // change the text to the "clean" version where illegal chars have been removed.
+
+            //    }
+
+
+            //}
+
+          
+
+            if (e.KeyChar.Equals('.') || e.KeyChar.Equals(','))
+            {
+                e.KeyChar = ((System.Globalization.CultureInfo)System.Globalization.CultureInfo.CurrentCulture).NumberFormat.NumberDecimalSeparator.ToCharArray()[0];
+            }
+        }
+
+        private void dropDownCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_listasDePreciosProductos!=null && dropDownCategorias.SelectedIndex != -1)
+            {
+
+            
+            gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() &&  x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+            }
         }
     }
 }
