@@ -64,7 +64,7 @@ Create Table HistoricoListaPreciosProductos
 (
 Id int not null AUTO_INCREMENT primary key,
 IdListaPrecio int,
-CodigoProducto int,
+CodigoProducto varchar(50),
 PrecioCosto decimal,
 AlicuotaIva decimal,
 PrecioVentaFinal decimal,
@@ -173,6 +173,12 @@ DELIMITER //
 CREATE PROCEDURE `UpdateListaPreciosProductos`(in inIdListaPrecio int, in inCodigoProducto varchar(50), in inPrecioCosto decimal, in inPorcentaje int, in inAlicuotaIva decimal, in inPrecioVentaFinal decimal )
 BEGIN
 
+insert into HistoricoListaPreciosProductos (IdListaPrecio, CodigoProducto, PrecioCosto, AlicuotaIva,PrecioVentaFinal,FechaActualizacion) 
+select IdListaPrecio, CodigoProducto, PrecioCosto, AlicuotaIva,PrecioVentaFinal,FechaActualizacion
+from listaPreciosProductos
+where IdListaPrecio = inIdListaPrecio
+and CodigoProducto = inCodigoProducto;
+
 update listaPreciosProductos
 set PrecioCosto = inPrecioCosto,
 Porcentaje = inPorcentaje, 
@@ -185,5 +191,4 @@ and CodigoProducto = inCodigoProducto;
 
 END
 DELIMITER //
-
 

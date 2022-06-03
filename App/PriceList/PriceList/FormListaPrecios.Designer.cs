@@ -44,12 +44,12 @@ namespace PriceList
             this.dropDownListaDePrecios = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFiltroCodigoProducto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.gridViewProductosAsociados = new System.Windows.Forms.DataGridView();
             this.dropDownCategorias = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCodigoProducto = new System.Windows.Forms.TextBox();
+            this.txtFiltroDescripcopnProducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.porcentajeAplicarProductoSeleccionado = new System.Windows.Forms.NumericUpDown();
@@ -191,10 +191,10 @@ namespace PriceList
             // 
             this.dropDownListaDePrecios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropDownListaDePrecios.FormattingEnabled = true;
-            this.dropDownListaDePrecios.Location = new System.Drawing.Point(144, 47);
+            this.dropDownListaDePrecios.Location = new System.Drawing.Point(151, 47);
             this.dropDownListaDePrecios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dropDownListaDePrecios.Name = "dropDownListaDePrecios";
-            this.dropDownListaDePrecios.Size = new System.Drawing.Size(377, 26);
+            this.dropDownListaDePrecios.Size = new System.Drawing.Size(370, 26);
             this.dropDownListaDePrecios.TabIndex = 14;
             this.dropDownListaDePrecios.SelectedIndexChanged += new System.EventHandler(this.dropDownListaDePrecios_SelectedIndexChanged);
             // 
@@ -202,7 +202,7 @@ namespace PriceList
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 49);
+            this.label4.Location = new System.Drawing.Point(18, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 20);
             this.label4.TabIndex = 13;
@@ -210,12 +210,12 @@ namespace PriceList
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtFiltroCodigoProducto);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.gridViewProductosAsociados);
             this.groupBox2.Controls.Add(this.dropDownCategorias);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtCodigoProducto);
+            this.groupBox2.Controls.Add(this.txtFiltroDescripcopnProducto);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(16, 242);
@@ -227,14 +227,15 @@ namespace PriceList
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos asociados";
             // 
-            // textBox1
+            // txtFiltroCodigoProducto
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 37);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.MaxLength = 20;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 27);
-            this.textBox1.TabIndex = 20;
+            this.txtFiltroCodigoProducto.Location = new System.Drawing.Point(151, 37);
+            this.txtFiltroCodigoProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFiltroCodigoProducto.MaxLength = 20;
+            this.txtFiltroCodigoProducto.Name = "txtFiltroCodigoProducto";
+            this.txtFiltroCodigoProducto.Size = new System.Drawing.Size(210, 27);
+            this.txtFiltroCodigoProducto.TabIndex = 20;
+            this.txtFiltroCodigoProducto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
@@ -262,12 +263,13 @@ namespace PriceList
             // 
             this.dropDownCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropDownCategorias.FormattingEnabled = true;
-            this.dropDownCategorias.Location = new System.Drawing.Point(144, 90);
+            this.dropDownCategorias.Location = new System.Drawing.Point(151, 90);
             this.dropDownCategorias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dropDownCategorias.Name = "dropDownCategorias";
-            this.dropDownCategorias.Size = new System.Drawing.Size(350, 26);
-            this.dropDownCategorias.TabIndex = 17;
+            this.dropDownCategorias.Size = new System.Drawing.Size(343, 26);
+            this.dropDownCategorias.TabIndex = 22;
             this.dropDownCategorias.SelectedIndexChanged += new System.EventHandler(this.dropDownCategorias_SelectedIndexChanged);
+            this.dropDownCategorias.SelectionChangeCommitted += new System.EventHandler(this.dropDownCategorias_SelectionChangeCommitted);
             // 
             // label2
             // 
@@ -279,20 +281,21 @@ namespace PriceList
             this.label2.TabIndex = 16;
             this.label2.Text = "Categoría:";
             // 
-            // txtCodigoProducto
+            // txtFiltroDescripcopnProducto
             // 
-            this.txtCodigoProducto.Location = new System.Drawing.Point(494, 37);
-            this.txtCodigoProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCodigoProducto.MaxLength = 20;
-            this.txtCodigoProducto.Name = "txtCodigoProducto";
-            this.txtCodigoProducto.Size = new System.Drawing.Size(308, 27);
-            this.txtCodigoProducto.TabIndex = 15;
+            this.txtFiltroDescripcopnProducto.Location = new System.Drawing.Point(520, 37);
+            this.txtFiltroDescripcopnProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFiltroDescripcopnProducto.MaxLength = 20;
+            this.txtFiltroDescripcopnProducto.Name = "txtFiltroDescripcopnProducto";
+            this.txtFiltroDescripcopnProducto.Size = new System.Drawing.Size(282, 27);
+            this.txtFiltroDescripcopnProducto.TabIndex = 21;
+            this.txtFiltroDescripcopnProducto.TextChanged += new System.EventHandler(this.txtFiltroDescripcopnProducto_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(367, 41);
+            this.label1.Location = new System.Drawing.Point(381, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 20);
             this.label1.TabIndex = 14;
@@ -331,7 +334,7 @@ namespace PriceList
             0});
             this.porcentajeAplicarProductoSeleccionado.Name = "porcentajeAplicarProductoSeleccionado";
             this.porcentajeAplicarProductoSeleccionado.Size = new System.Drawing.Size(87, 27);
-            this.porcentajeAplicarProductoSeleccionado.TabIndex = 31;
+            this.porcentajeAplicarProductoSeleccionado.TabIndex = 24;
             this.porcentajeAplicarProductoSeleccionado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.porcentajeAplicarProductoSeleccionado.ValueChanged += new System.EventHandler(this.porcentajeAplicarProductoSeleccionado_ValueChanged);
             this.porcentajeAplicarProductoSeleccionado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.porcentajeAplicarProductoSeleccionado_KeyPress);
@@ -345,7 +348,7 @@ namespace PriceList
             this.txtprecioVentaFinalProductoSeleccionado.ReadOnly = true;
             this.txtprecioVentaFinalProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtprecioVentaFinalProductoSeleccionado.Size = new System.Drawing.Size(151, 27);
-            this.txtprecioVentaFinalProductoSeleccionado.TabIndex = 30;
+            this.txtprecioVentaFinalProductoSeleccionado.TabIndex = 26;
             // 
             // label10
             // 
@@ -365,7 +368,7 @@ namespace PriceList
             this.txtAlicuotaIvaProductoSeleccionado.Name = "txtAlicuotaIvaProductoSeleccionado";
             this.txtAlicuotaIvaProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAlicuotaIvaProductoSeleccionado.Size = new System.Drawing.Size(87, 27);
-            this.txtAlicuotaIvaProductoSeleccionado.TabIndex = 28;
+            this.txtAlicuotaIvaProductoSeleccionado.TabIndex = 25;
             this.txtAlicuotaIvaProductoSeleccionado.Text = "0";
             this.txtAlicuotaIvaProductoSeleccionado.TextChanged += new System.EventHandler(this.txtAlicuotaIvaProductoSeleccionado_TextChanged);
             this.txtAlicuotaIvaProductoSeleccionado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlicuotaIvaProductoSeleccionado_KeyPress);
@@ -398,7 +401,7 @@ namespace PriceList
             this.txtCostoProductoSeleccionado.Name = "txtCostoProductoSeleccionado";
             this.txtCostoProductoSeleccionado.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCostoProductoSeleccionado.Size = new System.Drawing.Size(111, 27);
-            this.txtCostoProductoSeleccionado.TabIndex = 24;
+            this.txtCostoProductoSeleccionado.TabIndex = 23;
             this.txtCostoProductoSeleccionado.Text = "0";
             this.txtCostoProductoSeleccionado.TextChanged += new System.EventHandler(this.txtCostoProductoSeleccionado_TextChanged);
             // 
@@ -475,7 +478,7 @@ namespace PriceList
         private System.Windows.Forms.ComboBox dropDownListaDePrecios;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCodigoProducto;
+        private System.Windows.Forms.TextBox txtFiltroDescripcopnProducto;
         private System.Windows.Forms.DataGridView gridViewProductosAsociados;
         private System.Windows.Forms.ComboBox dropDownCategorias;
         private System.Windows.Forms.Label label2;
@@ -485,7 +488,7 @@ namespace PriceList
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFiltroCodigoProducto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCodigoProductoSeleccionado;
         private System.Windows.Forms.Label label6;

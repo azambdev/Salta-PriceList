@@ -351,11 +351,108 @@ namespace PriceList
 
         private void dropDownCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_listasDePreciosProductos!=null && dropDownCategorias.SelectedIndex != -1)
+            //try
+            //{
+
+           
+            //txtFiltroDescripcopnProducto.Text="";
+            //txtFiltroCodigoProducto.Text = "";
+            //if (dropDownListaDePrecios.SelectedIndex==-1)
+            //{
+            //        return;
+            //}
+
+            //    ComboBox comboBox = sender as ComboBox;
+            ////    if (_listasDePreciosProductos!=null && comboBox.SelectedItem.ToString()  != "")
+            ////{
+            
+            //gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() &&  x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+            ////}
+            //LimpiarCamposPrecios();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            dropDownCategorias.SelectedIndex = -1;
+            if (gridViewProductosAsociados.Rows.Count==0)
+            {
+                LimpiarCamposPrecios();
+                return;
+            }
+
+            if (txtFiltroCodigoProducto.Text.Length==0)
+            {
+                gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+                lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                dropDownCategorias.SelectedIndex = -1;
+                LimpiarCamposPrecios();
+            }
+
+            gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll( x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() &&  x.Producto().Codigo().ToUpper().Contains(txtFiltroCodigoProducto.Text.ToUpper())).OrderBy(x => x.Producto().Codigo()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+
+
+
+
+        }
+
+        private void txtFiltroDescripcopnProducto_TextChanged(object sender, EventArgs e)
+        {
+
+            dropDownCategorias.SelectedIndex = -1;
+            txtFiltroCodigoProducto.Clear();
+            if (gridViewProductosAsociados.Rows.Count == 0)
+            {
+                LimpiarCamposPrecios();
+                return;
+            }
+
+            if (txtFiltroDescripcopnProducto.Text.Length == 0)
+            {
+                gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+                lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                dropDownCategorias.SelectedIndex = -1;
+                LimpiarCamposPrecios();
+            }
+
+            gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Descripcion().ToUpper().Contains(txtFiltroDescripcopnProducto.Text.ToUpper())).OrderBy(x => x.Producto().Codigo()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+
+
+
+        }
+
+        private void dropDownCategorias_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
             {
 
-            
-            gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() &&  x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+
+                txtFiltroDescripcopnProducto.Text = "";
+                txtFiltroCodigoProducto.Text = "";
+                if (dropDownListaDePrecios.SelectedIndex == -1)
+                {
+                    return;
+                }
+
+                ComboBox comboBox = sender as ComboBox;
+                    if (_listasDePreciosProductos!=null && dropDownCategorias.SelectedItem  != null)
+               {
+
+                gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
+                }
+                LimpiarCamposPrecios();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error en proceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }
