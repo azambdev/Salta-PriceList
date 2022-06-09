@@ -52,6 +52,10 @@ namespace PriceList
             this.txtFiltroDescripcopnProducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtDescripcionProducto = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtFechaActualizacion = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.porcentajeAplicarProductoSeleccionado = new System.Windows.Forms.NumericUpDown();
             this.txtprecioVentaFinalProductoSeleccionado = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,16 +66,14 @@ namespace PriceList
             this.label7 = new System.Windows.Forms.Label();
             this.txtCodigoProductoSeleccionado = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtFechaActualizacion = new System.Windows.Forms.TextBox();
-            this.txtDescripcionProducto = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBoxProducto = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProductosAsociados)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicarProductoSeleccionado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -137,6 +139,7 @@ namespace PriceList
             this.toolStripButton2.Size = new System.Drawing.Size(68, 91);
             this.toolStripButton2.Text = "Buscar";
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton2.Visible = false;
             // 
             // toolStripSeparator3
             // 
@@ -175,7 +178,7 @@ namespace PriceList
             // 
             this.lblCantidadproductos.AutoSize = true;
             this.lblCantidadproductos.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadproductos.Location = new System.Drawing.Point(698, 53);
+            this.lblCantidadproductos.Location = new System.Drawing.Point(702, 53);
             this.lblCantidadproductos.Name = "lblCantidadproductos";
             this.lblCantidadproductos.Size = new System.Drawing.Size(18, 18);
             this.lblCantidadproductos.TabIndex = 16;
@@ -201,6 +204,7 @@ namespace PriceList
             this.dropDownListaDePrecios.Size = new System.Drawing.Size(370, 26);
             this.dropDownListaDePrecios.TabIndex = 14;
             this.dropDownListaDePrecios.SelectedIndexChanged += new System.EventHandler(this.dropDownListaDePrecios_SelectedIndexChanged);
+            this.dropDownListaDePrecios.SelectionChangeCommitted += new System.EventHandler(this.dropDownListaDePrecios_SelectionChangeCommitted);
             // 
             // label4
             // 
@@ -226,7 +230,7 @@ namespace PriceList
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(962, 405);
+            this.groupBox2.Size = new System.Drawing.Size(962, 509);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Productos asociados";
@@ -238,7 +242,7 @@ namespace PriceList
             this.txtFiltroCodigoProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFiltroCodigoProducto.MaxLength = 20;
             this.txtFiltroCodigoProducto.Name = "txtFiltroCodigoProducto";
-            this.txtFiltroCodigoProducto.Size = new System.Drawing.Size(210, 27);
+            this.txtFiltroCodigoProducto.Size = new System.Drawing.Size(329, 27);
             this.txtFiltroCodigoProducto.TabIndex = 20;
             this.txtFiltroCodigoProducto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -259,7 +263,7 @@ namespace PriceList
             this.gridViewProductosAsociados.Margin = new System.Windows.Forms.Padding(4);
             this.gridViewProductosAsociados.Name = "gridViewProductosAsociados";
             this.gridViewProductosAsociados.RowHeadersWidth = 51;
-            this.gridViewProductosAsociados.Size = new System.Drawing.Size(943, 252);
+            this.gridViewProductosAsociados.Size = new System.Drawing.Size(943, 367);
             this.gridViewProductosAsociados.TabIndex = 18;
             this.gridViewProductosAsociados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewProductosAsociados_CellContentClick);
             this.gridViewProductosAsociados.SelectionChanged += new System.EventHandler(this.gridViewProductosAsociados_SelectionChanged);
@@ -308,6 +312,7 @@ namespace PriceList
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.pictureBoxProducto);
             this.groupBox3.Controls.Add(this.txtDescripcionProducto);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.txtFechaActualizacion);
@@ -327,10 +332,51 @@ namespace PriceList
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(351, 505);
+            this.groupBox3.Size = new System.Drawing.Size(351, 609);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Precios";
+            // 
+            // txtDescripcionProducto
+            // 
+            this.txtDescripcionProducto.Location = new System.Drawing.Point(96, 97);
+            this.txtDescripcionProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDescripcionProducto.MaxLength = 50;
+            this.txtDescripcionProducto.Name = "txtDescripcionProducto";
+            this.txtDescripcionProducto.ReadOnly = true;
+            this.txtDescripcionProducto.Size = new System.Drawing.Size(248, 27);
+            this.txtDescripcionProducto.TabIndex = 33;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(8, 100);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(87, 20);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Descrip:";
+            // 
+            // txtFechaActualizacion
+            // 
+            this.txtFechaActualizacion.Location = new System.Drawing.Point(193, 315);
+            this.txtFechaActualizacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFechaActualizacion.MaxLength = 10;
+            this.txtFechaActualizacion.Name = "txtFechaActualizacion";
+            this.txtFechaActualizacion.ReadOnly = true;
+            this.txtFechaActualizacion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFechaActualizacion.Size = new System.Drawing.Size(151, 27);
+            this.txtFechaActualizacion.TabIndex = 31;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(73, 318);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(114, 20);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Fecha Act.:";
             // 
             // porcentajeAplicarProductoSeleccionado
             // 
@@ -350,7 +396,7 @@ namespace PriceList
             // 
             // txtprecioVentaFinalProductoSeleccionado
             // 
-            this.txtprecioVentaFinalProductoSeleccionado.Location = new System.Drawing.Point(153, 373);
+            this.txtprecioVentaFinalProductoSeleccionado.Location = new System.Drawing.Point(193, 362);
             this.txtprecioVentaFinalProductoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtprecioVentaFinalProductoSeleccionado.MaxLength = 10;
             this.txtprecioVentaFinalProductoSeleccionado.Name = "txtprecioVentaFinalProductoSeleccionado";
@@ -363,11 +409,11 @@ namespace PriceList
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 376);
+            this.label10.Location = new System.Drawing.Point(42, 365);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(141, 20);
+            this.label10.Size = new System.Drawing.Size(145, 20);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Venta Final $:";
+            this.label10.Text = "Precio Final $:";
             // 
             // txtAlicuotaIvaProductoSeleccionado
             // 
@@ -386,7 +432,7 @@ namespace PriceList
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 262);
+            this.label9.Location = new System.Drawing.Point(12, 262);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 20);
             this.label9.TabIndex = 27;
@@ -444,52 +490,22 @@ namespace PriceList
             this.label6.TabIndex = 21;
             this.label6.Text = "Código:";
             // 
-            // label11
+            // pictureBoxProducto
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(33, 320);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(114, 20);
-            this.label11.TabIndex = 30;
-            this.label11.Text = "Fecha Act.:";
-            // 
-            // txtFechaActualizacion
-            // 
-            this.txtFechaActualizacion.Location = new System.Drawing.Point(153, 315);
-            this.txtFechaActualizacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtFechaActualizacion.MaxLength = 10;
-            this.txtFechaActualizacion.Name = "txtFechaActualizacion";
-            this.txtFechaActualizacion.ReadOnly = true;
-            this.txtFechaActualizacion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtFechaActualizacion.Size = new System.Drawing.Size(151, 27);
-            this.txtFechaActualizacion.TabIndex = 31;
-            // 
-            // txtDescripcionProducto
-            // 
-            this.txtDescripcionProducto.Location = new System.Drawing.Point(96, 97);
-            this.txtDescripcionProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtDescripcionProducto.MaxLength = 50;
-            this.txtDescripcionProducto.Name = "txtDescripcionProducto";
-            this.txtDescripcionProducto.ReadOnly = true;
-            this.txtDescripcionProducto.Size = new System.Drawing.Size(248, 27);
-            this.txtDescripcionProducto.TabIndex = 33;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(8, 100);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 20);
-            this.label12.TabIndex = 32;
-            this.label12.Text = "Descrip:";
+            this.pictureBoxProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxProducto.Location = new System.Drawing.Point(6, 404);
+            this.pictureBoxProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxProducto.Name = "pictureBoxProducto";
+            this.pictureBoxProducto.Size = new System.Drawing.Size(338, 199);
+            this.pictureBoxProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProducto.TabIndex = 34;
+            this.pictureBoxProducto.TabStop = false;
             // 
             // FormListaPrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 646);
+            this.ClientSize = new System.Drawing.Size(1350, 764);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -512,6 +528,7 @@ namespace PriceList
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicarProductoSeleccionado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,5 +572,6 @@ namespace PriceList
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDescripcionProducto;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox pictureBoxProducto;
     }
 }
