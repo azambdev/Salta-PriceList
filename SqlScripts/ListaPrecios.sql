@@ -169,12 +169,17 @@ order by lpp.CodigoProducto asc;
 
 END
 
+ALTER TABLE HistoricoListaPreciosProductos
+ADD COLUMN Porcentaje int default 0 AFTER PrecioCosto;
+
+
+
 DELIMITER //
 CREATE PROCEDURE `UpdateListaPreciosProductos`(in inIdListaPrecio int, in inCodigoProducto varchar(50), in inPrecioCosto decimal, in inPorcentaje int, in inAlicuotaIva decimal, in inPrecioVentaFinal decimal )
 BEGIN
 
-insert into HistoricoListaPreciosProductos (IdListaPrecio, CodigoProducto, PrecioCosto, AlicuotaIva,PrecioVentaFinal,FechaActualizacion) 
-select IdListaPrecio, CodigoProducto, PrecioCosto, AlicuotaIva,PrecioVentaFinal,FechaActualizacion
+insert into HistoricoListaPreciosProductos (IdListaPrecio, CodigoProducto, PrecioCosto, Porcentaje,AlicuotaIva,PrecioVentaFinal,FechaActualizacion) 
+select IdListaPrecio, CodigoProducto, PrecioCosto, Porcentaje, AlicuotaIva,PrecioVentaFinal,FechaActualizacion
 from listaPreciosProductos
 where IdListaPrecio = inIdListaPrecio
 and CodigoProducto = inCodigoProducto;
@@ -191,4 +196,5 @@ and CodigoProducto = inCodigoProducto;
 
 END
 DELIMITER //
+
 
