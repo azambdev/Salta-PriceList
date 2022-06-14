@@ -127,6 +127,9 @@
   <data name="botonGuardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\botonGuardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="limpiarImagenIcono2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\limpiarImagenIcono2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="listaPreciosIconoBoton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\listaPreciosIconoBoton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,7 +145,7 @@
   <data name="impresoraImagenIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\impresoraImagenIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="limpiarImagenIcono2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\limpiarImagenIcono2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="historia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\historia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

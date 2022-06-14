@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+    <Compile Include="HistoricoListaDePrecios.cs" />
     <Compile Include="ListaDePrecio.cs" />
     <Compile Include="ListaDePreciosProductos.cs" />
     <Compile Include="Producto.cs" />

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,6 +60,12 @@
     </Compile>
     <Compile Include="FormBuscarProductos.Designer.cs">
       <DependentUpon>FormBuscarProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImpresionListaPrecios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImpresionListaPrecios.Designer.cs">
+      <DependentUpon>FormImpresionListaPrecios.cs</DependentUpon>
     </Compile>
     <Compile Include="FormListaPrecios.cs">
       <SubType>Form</SubType>
@@ -83,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormBuscarProductos.resx">
       <DependentUpon>FormBuscarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImpresionListaPrecios.resx">
+      <DependentUpon>FormImpresionListaPrecios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListaPrecios.resx">
       <DependentUpon>FormListaPrecios.cs</DependentUpon>
@@ -121,6 +133,7 @@
     <Content Include="Resources\icons\limpiarImagenIcono.png" />
     <Content Include="Resources\icons\limpiarImagenIcono2.png" />
     <Content Include="Resources\icons\nuevaListaImagenIcono.png" />
+    <Content Include="Resources\images\historia.png" />
     <Content Include="Resources\images\impresoraImagen.png" />
     <Content Include="Resources\images\limpiarImagen.png" />
     <Content Include="Resources\images\nuevaListaImagen.png" />

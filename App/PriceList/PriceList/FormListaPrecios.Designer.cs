@@ -35,8 +35,8 @@ namespace PriceList
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCantidadproductos = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@ namespace PriceList
             this.txtFiltroDescripcopnProducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxProducto = new System.Windows.Forms.PictureBox();
             this.txtDescripcionProducto = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtFechaActualizacion = new System.Windows.Forms.TextBox();
@@ -66,14 +67,13 @@ namespace PriceList
             this.label7 = new System.Windows.Forms.Label();
             this.txtCodigoProductoSeleccionado = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBoxProducto = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProductosAsociados)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicarProductoSeleccionado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicarProductoSeleccionado)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -86,8 +86,8 @@ namespace PriceList
             this.toolStripSeparator5,
             this.toolStripButton1,
             this.toolStripSeparator1,
-            this.toolStripButton2,
             this.toolStripSeparator3,
+            this.toolStripButton2,
             this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -129,6 +129,11 @@ namespace PriceList
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 94);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 94);
+            // 
             // toolStripButton2
             // 
             this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,22 +146,17 @@ namespace PriceList
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.Visible = false;
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 94);
-            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton4.Image = global::PriceList.Properties.Resources.impresoraImagenIcono;
+            this.toolStripButton4.Image = global::PriceList.Properties.Resources.historia;
             this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(86, 91);
-            this.toolStripButton4.Text = "Imprimir";
+            this.toolStripButton4.Size = new System.Drawing.Size(77, 91);
+            this.toolStripButton4.Text = "Historia";
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton4.Visible = false;
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // groupBox1
             // 
@@ -337,6 +337,17 @@ namespace PriceList
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Precios";
             // 
+            // pictureBoxProducto
+            // 
+            this.pictureBoxProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxProducto.Location = new System.Drawing.Point(6, 404);
+            this.pictureBoxProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxProducto.Name = "pictureBoxProducto";
+            this.pictureBoxProducto.Size = new System.Drawing.Size(338, 199);
+            this.pictureBoxProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProducto.TabIndex = 34;
+            this.pictureBoxProducto.TabStop = false;
+            // 
             // txtDescripcionProducto
             // 
             this.txtDescripcionProducto.Location = new System.Drawing.Point(96, 97);
@@ -490,17 +501,6 @@ namespace PriceList
             this.label6.TabIndex = 21;
             this.label6.Text = "Código:";
             // 
-            // pictureBoxProducto
-            // 
-            this.pictureBoxProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxProducto.Location = new System.Drawing.Point(6, 404);
-            this.pictureBoxProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxProducto.Name = "pictureBoxProducto";
-            this.pictureBoxProducto.Size = new System.Drawing.Size(338, 199);
-            this.pictureBoxProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProducto.TabIndex = 34;
-            this.pictureBoxProducto.TabStop = false;
-            // 
             // FormListaPrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -527,8 +527,8 @@ namespace PriceList
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProductosAsociados)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicarProductoSeleccionado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.porcentajeAplicarProductoSeleccionado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

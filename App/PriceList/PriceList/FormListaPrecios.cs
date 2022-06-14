@@ -63,9 +63,9 @@ namespace PriceList
         {
             try
             {
-                
-                    BLogic.Producto producto = new BLogic.Producto();
-                   _productos=producto.GetProductos();
+
+                BLogic.Producto producto = new BLogic.Producto();
+                _productos = producto.GetProductos();
 
 
                 ActualizarListadoDeListas();
@@ -134,14 +134,14 @@ namespace PriceList
                 _listasDePreciosProductos = listasDePreciosProductos;
                 gridViewProductosAsociados.DataSource = null;
 
-                if (dropDownCategorias.SelectedItem.ToString()=="Todas")
+                if (dropDownCategorias.SelectedItem.ToString() == "Todas")
                 {
                     gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
 
                 }
                 else
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion()==dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
 
                 }
 
@@ -209,8 +209,8 @@ namespace PriceList
                 txtAlicuotaIvaProductoSeleccionado.Text = alicuotaIva.ToString();
                 decimal precioFinal = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[6].Value.ToString());
                 txtprecioVentaFinalProductoSeleccionado.Text = precioFinal.ToString();
-                txtDescripcionProducto.Text= gridViewProductosAsociados.Rows[rowindex].Cells[1].Value.ToString();
-                txtFechaActualizacion.Text= gridViewProductosAsociados.Rows[rowindex].Cells[7].Value.ToString();
+                txtDescripcionProducto.Text = gridViewProductosAsociados.Rows[rowindex].Cells[1].Value.ToString();
+                txtFechaActualizacion.Text = gridViewProductosAsociados.Rows[rowindex].Cells[7].Value.ToString();
                 //pictureBoxProducto.Image = _productos.Find(x => x.Codigo() == codigoDeProducto).Imagen();
 
                 BLogic.Producto productoConsultado = _productos.Find(x => x.Codigo() == codigoDeProducto);
@@ -239,7 +239,12 @@ namespace PriceList
             pictureBoxProducto.Image = null;
             pictureBoxProducto.Image = null;
             gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
-         
+
+
+            this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+            this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+            gridViewProductosAsociados.AutoResizeColumns();
+
             lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
             dropDownCategorias.SelectedItem = "Todas";
             LimpiarCamposPrecios();
@@ -255,7 +260,7 @@ namespace PriceList
             porcentajeAplicarProductoSeleccionado.Value = 0;
             txtAlicuotaIvaProductoSeleccionado.Text = "0";
             txtprecioVentaFinalProductoSeleccionado.Text = "0";
-            
+
             txtDescripcionProducto.Clear();
             txtFechaActualizacion.Clear();
             gridViewProductosAsociados.ClearSelection();
@@ -292,7 +297,7 @@ namespace PriceList
                 int columnindex = gridViewProductosAsociados.CurrentCell.ColumnIndex;
                 string codigoDeProducto = gridViewProductosAsociados.Rows[rowindex].Cells[0].Value.ToString();
                 txtCodigoProductoSeleccionado.Text = codigoDeProducto;
-                string descripcionDeProducto =  gridViewProductosAsociados.Rows[rowindex].Cells[1].Value.ToString();
+                string descripcionDeProducto = gridViewProductosAsociados.Rows[rowindex].Cells[1].Value.ToString();
                 txtDescripcionProducto.Text = descripcionDeProducto;
                 decimal costoDeProducto = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[3].Value.ToString());
                 txtCostoProductoSeleccionado.Text = costoDeProducto.ToString();
@@ -302,7 +307,7 @@ namespace PriceList
                 txtAlicuotaIvaProductoSeleccionado.Text = alicuotaIva.ToString();
                 decimal precioFinal = decimal.Parse(gridViewProductosAsociados.Rows[rowindex].Cells[6].Value.ToString());
                 txtprecioVentaFinalProductoSeleccionado.Text = precioFinal.ToString();
-                txtFechaActualizacion.Text= gridViewProductosAsociados.Rows[rowindex].Cells[7].Value.ToString();
+                txtFechaActualizacion.Text = gridViewProductosAsociados.Rows[rowindex].Cells[7].Value.ToString();
 
                 BLogic.Producto productoConsultado = _productos.Find(x => x.Codigo() == codigoDeProducto);
 
@@ -418,7 +423,7 @@ namespace PriceList
 
         private void dropDownCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
+
             //try
             //{
 
@@ -458,28 +463,40 @@ namespace PriceList
 
             if (txtFiltroCodigoProducto.Text.Length != 0)
             {
-                if (dropDownCategorias.SelectedItem.ToString() == "Todas" && txtFiltroDescripcopnProducto.Text.Length==0)
+                if (dropDownCategorias.SelectedItem.ToString() == "Todas" && txtFiltroDescripcopnProducto.Text.Length == 0)
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()  && x.Producto().Codigo().ToUpper().Contains(txtFiltroCodigoProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Codigo().ToUpper().Contains(txtFiltroCodigoProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
                 if (dropDownCategorias.SelectedItem.ToString() != "Todas" && txtFiltroDescripcopnProducto.Text.Length == 0)
                 {
                     gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString() && x.Producto().Codigo().Contains(txtFiltroCodigoProducto.Text)).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
                 if (dropDownCategorias.SelectedItem.ToString() == "Todas" && txtFiltroDescripcopnProducto.Text.Length != 0)
                 {
                     gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Codigo().Contains(txtFiltroCodigoProducto.Text.ToUpper()) && x.Producto().Descripcion().ToUpper().Contains(txtFiltroDescripcopnProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
                 if (dropDownCategorias.SelectedItem.ToString() != "Todas" && txtFiltroDescripcopnProducto.Text.Length != 0)
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion()==dropDownCategorias.SelectedItem.ToString() && x.Producto().Codigo().Contains(txtFiltroCodigoProducto.Text.ToUpper()) && x.Producto().Descripcion().ToUpper().Contains(txtFiltroDescripcopnProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString() && x.Producto().Codigo().Contains(txtFiltroCodigoProducto.Text.ToUpper()) && x.Producto().Descripcion().ToUpper().Contains(txtFiltroDescripcopnProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
                 //gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal() }).ToList();
@@ -491,14 +508,20 @@ namespace PriceList
             {
                 if (dropDownCategorias.SelectedItem.ToString() == "Todas" && txtFiltroDescripcopnProducto.Text.Length == 0)
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() ).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
                 if (dropDownCategorias.SelectedItem.ToString() != "Todas" && txtFiltroDescripcopnProducto.Text.Length == 0)
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion()==dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
 
@@ -506,6 +529,9 @@ namespace PriceList
                 {
                     gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Descripcion().ToUpper().Contains(txtFiltroDescripcopnProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
 
@@ -514,19 +540,15 @@ namespace PriceList
 
                     gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString() && x.Producto().Descripcion().ToUpper().Contains(txtFiltroDescripcopnProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
+                    this.gridViewProductosAsociados.RowsDefaultCellStyle.BackColor = Color.Bisque;
+                    this.gridViewProductosAsociados.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                    gridViewProductosAsociados.AutoResizeColumns();
                     return;
                 }
-
-
-
-
             }
 
             //gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Codigo().ToUpper().Contains(txtFiltroCodigoProducto.Text.ToUpper())).OrderBy(x => x.Producto().Codigo()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
-
-
-
-
+          
         }
 
         private void txtFiltroDescripcopnProducto_TextChanged(object sender, EventArgs e)
@@ -583,13 +605,13 @@ namespace PriceList
                 }
                 if (dropDownCategorias.SelectedItem.ToString() == "Todas" && txtFiltroCodigoProducto.Text.Length != 0)
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() &&  x.Producto().Codigo().ToUpper().Contains(txtFiltroCodigoProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Codigo().ToUpper().Contains(txtFiltroCodigoProducto.Text.ToUpper())).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
                     return;
                 }
                 if (dropDownCategorias.SelectedItem.ToString() != "Todas" && txtFiltroCodigoProducto.Text.Length == 0)
                 {
-                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion().ToUpper()== dropDownCategorias.SelectedItem.ToString().ToUpper()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
+                    gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion().ToUpper() == dropDownCategorias.SelectedItem.ToString().ToUpper()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
                     lblCantidadproductos.Text = gridViewProductosAsociados.Rows.Count.ToString();
                     return;
                 }
@@ -631,15 +653,15 @@ namespace PriceList
                 {
                     pictureBoxProducto.Image = null;
                     gridViewProductosAsociados.DataSource = _listasDePreciosProductos.FindAll(x => x.ListaDePrecio().Descripcion() == dropDownListaDePrecios.SelectedItem.ToString() && x.Producto().Categoria().Descripcion() == dropDownCategorias.SelectedItem.ToString()).Select(p => new { Código = p.Producto().Codigo(), Descripción = p.Producto().Descripcion(), Categoría = p.Producto().Categoria().Descripcion(), Costo = p.PrecioCosto(), Porcentaje = p.Porcentaje(), AlicuotaIva = p.AlicuotaIva(), PrecioVentaFinal = p.PrecioVentaFinal(), FechaActualizacion = p.FechaActualizacion().ToShortDateString() }).ToList();
-                    
+
                 }
                 LimpiarCamposPrecios();
                 pictureBoxProducto.Image = null;
-                if (gridViewProductosAsociados.Rows.Count!=0)
+                if (gridViewProductosAsociados.Rows.Count != 0)
                 {
                     gridViewProductosAsociados.Rows[0].Selected = true;
                 }
-               
+
 
 
             }
@@ -658,6 +680,32 @@ namespace PriceList
         private void dropDownListaDePrecios_SelectionChangeCommitted(object sender, EventArgs e)
         {
             pictureBoxProducto.Image = null;
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+
+
+            if (Application.OpenForms["FormImpresionListaPrecios"] != null)
+            {
+                // form is opened, so activate it
+                Application.OpenForms["FormImpresionListaPrecios"].Activate();
+            }
+            else
+            {
+                FormImpresionListaPrecios frmLista = new FormImpresionListaPrecios();
+                // frm.MdiParent = this;
+                // frm.Dock = DockStyle.;
+                frmLista.ShowDialog();
+
+            }
+
+
+
+
+
+
+
         }
     }
 }

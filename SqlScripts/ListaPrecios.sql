@@ -197,4 +197,27 @@ and CodigoProducto = inCodigoProducto;
 END
 DELIMITER //
 
+CREATE PROCEDURE `GetHistoricoListaDePrecios`()
+BEGIN
 
+select lp.id as IdListaPrecio, lp.Descripcion as ListaPrecioDescripcion,'Actual' as Vigencia, lp.Porcentaje as PorcentajeListaPrecios, lpp.id as IdListaPreciosProductos, lpp.idlistaprecio as lppIdListaPrecio, lpp.CodigoProducto,prod.Id as IdProducto, prod.Descripcion as DescripcionProducto, lpp.precioCosto,
+ lpp.porcentaje, lpp.AlicuotaIva, lpp.PrecioVentaFinal, lpp.FechaActualizacion, Cat.Id as IdCategoria, Cat.Codigo as CodigoCategoria, Cat.Descripcion DescripcionCategoria
+from listapreciosproductos lpp, productos prod, categorias cat, listaprecios lp
+where lpp.CodigoProducto = prod.Codigo
+And prod.IdCategoria = cat.Id
+AND lp.id = lpp.IdListaPrecio
+and prod.activo=1
+
+union
+
+select lp.id as IdListaPrecio, lp.Descripcion as ListaPrecioDescripcion, 'Anterior' as Vigencia, lp.Porcentaje as PorcentajeListaPrecios, lpp.id as IdListaPreciosProductos, lpp.idlistaprecio as lppIdListaPrecio, lpp.CodigoProducto,prod.Id as IdProducto, prod.Descripcion as DescripcionProducto, lpp.precioCosto,
+ lpp.Porcentaje, lpp.AlicuotaIva, lpp.PrecioVentaFinal, lpp.FechaActualizacion, Cat.Id as IdCategoria, Cat.Codigo as CodigoCategoria, Cat.Descripcion DescripcionCategoria
+from HistoricoListaPreciosProductos lpp, productos prod, categorias cat, listaprecios lp
+where lpp.CodigoProducto = prod.Codigo
+And prod.IdCategoria = cat.Id
+AND lp.id = lpp.IdListaPrecio
+and prod.activo=1
+order by 2, 7 asc, 14 desc;
+
+
+END
